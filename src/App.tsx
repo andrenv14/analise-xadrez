@@ -213,7 +213,16 @@ export default function App() {
                     {analiseAtual.melhorLance ? (
                       <>
                         Melhor lance: <strong>{melhorLanceSan ?? analiseAtual.melhorLance}</strong>
-                        <span className="profundidade"> · profundidade {analiseAtual.profundidade}</span>
+                        {/* Em mate forçado o Stockfish reporta profundidades
+                            absurdas (245 e afins) porque segue iterando sobre
+                            uma linha já resolvida: o número é real, mas não
+                            informa nada. */}
+                        {analiseAtual.avaliacao.tipo === 'centipeoes' && (
+                          <span className="profundidade">
+                            {' '}
+                            · profundidade {analiseAtual.profundidade}
+                          </span>
+                        )}
                       </>
                     ) : (
                       'A partida termina aqui.'
