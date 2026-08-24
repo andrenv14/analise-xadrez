@@ -53,4 +53,19 @@ export const PARAMETROS_DE_CLASSIFICACAO = {
    * apenas oscilação entre duas buscas.
    */
   MARGEM_DE_SACRIFICIO_CP: 30,
+
+  /**
+   * "Brilhante" — o quanto quem sacrificou pode estar atrás e a posição ainda
+   * contar como jogável.
+   *
+   * Sem esse piso, "a avaliação se mantém" vira uma frase sem conteúdo: em
+   * posição já decidida não há o que manter, e o material está indo embora de
+   * qualquer forma. O motor apenas escolhe a forma menos ruim de perder, e o
+   * detector lê isso como entrega voluntária de material.
+   *
+   * 300cp é a peça inteira de desvantagem: até aí o jogo existe, e um
+   * sacrifício que segura a posição é achado de verdade; além disso, não é
+   * sacrifício, é a derrota seguindo seu curso.
+   */
+  LIMIAR_DE_POSICAO_JOGAVEL_CP: 300,
 } as const

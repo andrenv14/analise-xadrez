@@ -141,10 +141,16 @@ export function classificarLance(
   if (foiOMelhor && principal) {
     // --- "Brilhante": o principal do motor E sacrifício de material -------
     const entrega = materialEntregue(antes.fen, lanceJogadoUci, depois.linhas[0]?.lance ?? null, cor)
+    // A posição precisa continuar jogável para quem entregou o material. Em
+    // posição já perdida o material sai de qualquer jeito e o motor só escolhe
+    // a forma menos ruim de perder — sem este piso, `37. f3` a -7.40 vira
+    // "sacrifício de 3.30 peões".
+    const aindaJogavel = valorDepois >= -P.LIMIAR_DE_POSICAO_JOGAVEL_CP
     const sacrificou =
       entrega !== null &&
       entrega.entregue >= P.LIMIAR_DE_SACRIFICIO_CP &&
-      perdaCp <= P.MARGEM_DE_SACRIFICIO_CP
+      perdaCp <= P.MARGEM_DE_SACRIFICIO_CP &&
+      aindaJogavel
 
     // Fora de teoria por construção: o ramo de "Livro" acima já retornou.
     if (sacrificou) {

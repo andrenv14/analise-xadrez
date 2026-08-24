@@ -10,6 +10,7 @@
  */
 export { lerInfo, lerMelhorLance, montarAnalise } from '../../src/engine/protocolo'
 export { classificarPartida } from '../../src/analise/classificarPartida'
+export { classificarLance } from '../../src/analise/classificacao'
 export { parsePgn, fenNoIndice } from '../../src/chess/pgn'
 export { PARAMETROS_DE_CLASSIFICACAO } from '../../src/analise/parametros'
 export { PGN_EXEMPLO } from '../../src/chess/partidaDeExemplo'
