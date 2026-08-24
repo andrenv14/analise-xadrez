@@ -436,3 +436,97 @@ button.primario {
   color: var(--texto-fraco);
   font-variant-numeric: tabular-nums;
 }
+
+/* --- Abertura reconhecida ---------------------------------------------- */
+
+.abertura {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: -0.2rem 0 0.7rem;
+  font-size: 0.82rem;
+  color: var(--texto-fraco);
+}
+
+.abertura__eco {
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  border: 1px solid var(--borda);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+/* --- Resumo final ------------------------------------------------------- */
+
+.resumo {
+  margin-top: 2rem;
+  padding: 1rem 1.1rem 1.2rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--painel);
+  max-width: 26rem;
+}
+
+.resumo h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+}
+
+.resumo__parcial {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--texto-fraco);
+}
+
+.resumo__tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+.resumo__tabela thead th {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--borda);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-fraco);
+}
+
+.resumo__tabela thead th:first-child {
+  text-align: left;
+}
+
+.resumo__tabela thead th:not(:first-child) {
+  text-align: right;
+  width: 4.5rem;
+}
+
+.resumo__tabela tbody th {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.32rem 0;
+  font-weight: 400;
+  text-align: left;
+}
+
+.resumo__tabela tbody td {
+  padding: 0.32rem 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.resumo__tabela tbody tr + tr th,
+.resumo__tabela tbody tr + tr td {
+  border-top: 1px solid rgba(46, 50, 60, 0.5);
+}
+
+.resumo__nota {
+  margin: 0.7rem 0 0;
+  font-size: 0.78rem;
+  color: var(--texto-fraco);
+  line-height: 1.45;
+}

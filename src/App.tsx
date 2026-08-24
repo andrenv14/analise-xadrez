@@ -6,7 +6,9 @@ import { PainelDoLance } from './components/PainelDoLance'
 import { ProgressoDoMotor } from './components/ProgressoDoMotor'
 import { fenNoIndice, parsePgn, PgnError } from './chess/pgn'
 import type { ParsedGame } from './chess/pgn'
+import { ResumoDaPartida } from './components/ResumoDaPartida'
 import { classificarPartida } from './analise/classificarPartida'
+import { resumirPartida } from './analise/resumo'
 import { PGN_EXEMPLO } from './chess/partidaDeExemplo'
 import { useAnaliseDaPartida } from './hooks/useAnaliseDaPartida'
 
@@ -78,9 +80,16 @@ export default function App() {
 
   const { analises, progresso } = useAnaliseDaPartida(jogo, indice)
 
-  const classificacoes = useMemo(
-    () => (jogo ? classificarPartida(jogo, analises) : []),
+  const partida = useMemo(
+    () => (jogo ? classificarPartida(jogo, analises) : null),
     [jogo, analises],
+  )
+  const classificacoes = partida?.lances ?? []
+  // Depende de `partida`, que é memoizado — e não de `classificacoes`, que é
+  // um array novo a cada render quando não há partida.
+  const resumo = useMemo(
+    () => (jogo && partida ? resumirPartida(jogo.plies, partida.lances) : null),
+    [jogo, partida],
   )
 
   const fen = useMemo(() => (jogo ? fenNoIndice(jogo, indice) : null), [jogo, indice])
@@ -191,6 +200,12 @@ export default function App() {
               {jogo.headers.White ?? 'Brancas'} × {jogo.headers.Black ?? 'Pretas'}
               {jogo.headers.Result ? ` — ${jogo.headers.Result}` : ''}
             </h2>
+            {partida?.abertura && (
+              <p className="abertura">
+                <span className="abertura__eco">{partida.abertura.eco}</span>
+                {partida.abertura.nome}
+              </p>
+            )}
             <p className="posicao-atual">
               {lanceAtual
                 ? `Lance ${lanceAtual.moveNumber}${lanceAtual.color === 'w' ? '.' : '...'} ${lanceAtual.san}`
@@ -214,6 +229,14 @@ export default function App() {
             />
           </aside>
         </section>
+      )}
+
+      {jogo && resumo && (
+        <ResumoDaPartida
+          resumo={resumo}
+          totalDePlies={jogo.plies.length}
+          completo={progresso.estado === 'concluida'}
+        />
       )}
     </div>
   )

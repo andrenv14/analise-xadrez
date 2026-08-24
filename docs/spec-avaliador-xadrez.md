@@ -123,23 +123,79 @@ avaliação), **"Perdeu" vence**.
 
 ### "Livro" precisa de base de aberturas
 
-O `sofia-bot` já tem 3.810 aberturas importadas de `lichess-org/chess-openings`
-(**domínio público**). Exportar um subconjunto como JSON estático e embutir no
-site — sem banco, sem chamada de rede. Enquanto isso não existir, "Livro" e
-"Brilhante" ficam desligados (o gancho pronto, sem heurística substituta).
+**Feito.** A base vem de `lichess-org/chess-openings` (CC0-1.0, domínio
+público), baixada do repositório original — não do banco da VPS. São as 3.810
+aberturas inteiras, sem subconjunto: 432 KB crus, 60 KB comprimidos, embutidos
+no bundle. Sem banco, sem chamada de rede.
+
+O repositório publica os TSV (`eco`, `name`, `pgn`); o `dist/` com as colunas
+`uci` e `epd` é artefato de build e não está versionado, então a chave de
+posição é calculada por `scripts/gerar-aberturas.mjs` com o mesmo `chess.js`
+que o app usa para consultar.
+
+A base **nomeia posições e tem buracos** no meio de linhas conhecidas — na
+Najdorf, a posição após `4.Nxd4` não tem nome, mas a de `4...Nf6` tem. Por isso
+a teoria vai até o **ply mais fundo** que está na base, não até o primeiro
+buraco: cortar no primeiro buraco encerraria o livro no lance 3 de uma partida
+que segue em teoria até o lance 8.
+
+Dois recortes no rótulo, cada um corrigindo um caso observado:
+
+- **Perda pequena.** `2. g4` do mate do bobo está numa posição nomeada (Barnes
+  Opening: Fool's Mate) e nem por isso deixa de ser capivara. É o "Erro
+  continua valendo lá dentro" acima.
+- **A partida não acaba ali.** A base nomeia até a posição de mate; chamar
+  `2... Qh4#` de "lance de livro" é absurdo.
 
 ## Calibração — medir, não estimar
 
-O recurso escasso é tempo por posição. Medido em máquina rápida: ~900 ms por
-posição, 30 s para 33 lances. Em máquina de escritório, bem mais.
+O recurso escasso é tempo por posição. Medido em máquina rápida: ~600 ms por
+posição, 21 s para 33 lances. Em máquina de escritório, bem mais.
 
-A calibração é uma **grade**: tempo por lance (1000 / 600 / 300 ms) × MultiPV
-(1 e 3). O que decide não é quanto tempo levou, e sim **em quantos lances a
-classificação divergiu** entre as combinações. Se 300 ms classificar igual a
-1000 ms, os 700 ms de diferença são espera pura.
+A calibração é uma **grade**. O que decide não é quanto tempo levou, e sim **em
+quantos lances a classificação divergiu** entre as combinações.
 
-`MultiPV 3` não triplica o tempo — o motor já explora alternativas durante a
-busca; o custo extra é mantê-las separadas. Quanto custa de fato, a grade diz.
+### A busca é por profundidade fixa, não por tempo
+
+`go depth 16`, com **limpeza de hash (`ucinewgame`) antes de cada posição**.
+
+A primeira grade usou `go movetime` e o resultado foi inutilizável: repetir a
+mesma configuração contra ela mesma trocava **4 a 10 rótulos em 33**. A busca
+por tempo não é determinística — a mesma posição alcança profundidades
+diferentes conforme a carga da máquina, e muitas classificações ficam em cima
+de um limiar. Ruído maior que o efeito de qualquer parâmetro que a grade
+quisesse medir. Para um site cuja função é classificar lance, resultado que
+muda sozinho é defeito visível.
+
+Com profundidade fixa e hash limpo, duas execuções divergem em **0 de 33**.
+
+**As duas partes são necessárias.** Com o hash reusado entre posições, a
+divergência volta a **9 de 33**: o resultado passa a depender de quais posições
+foram analisadas antes, e a fila prioriza a posição selecionada — ou seja, a
+ordem muda conforme o usuário navega. Profundidade fixa sem hash limpo troca
+"irreprodutível pelo relógio" por "irreprodutível pela navegação".
+
+O preço é o inverso do `movetime`: com profundidade fixa, o **tempo** por
+posição é que varia, e varia com a máquina do visitante.
+
+A profundidade 16 saiu da grade: é a menor que preserva os dois sacrifícios da
+partida de exemplo (12 e 14 perdem `13.Rxd7`) e não produz "Perdeu" falso em
+`15.Bxd7+`. A 18 custa 2,4× o tempo e muda 6 rótulos, sem verdade de
+referência que diga que os dela são melhores.
+
+### Quanto custa o MultiPV
+
+Sob **profundidade fixa**, `MultiPV 3` custa **3,7×** o tempo: 21,2 s contra
+5,8 s da partida inteira a `go depth 16`.
+
+Cuidado com a intuição de que "MultiPV mal custa nada" — ela vem de medição
+sob busca por **tempo**, onde o tempo é fixo por definição e o custo do MultiPV
+aparece como *menos profundidade alcançada*, não como mais segundos. Sob
+profundidade fixa, o mesmo custo aparece no relógio.
+
+Mantido mesmo assim: sem MultiPV, "Excelente" não existe, e a diferença medida
+é de **16 rótulos em 33**. MultiPV 1 também perde `13.Rxd7` (de "Brilhante"
+para "Melhor") e transforma `15...Nxd7` de "Excelente" em "Capivara".
 
 ## README do repo (é parte da entrega)
 

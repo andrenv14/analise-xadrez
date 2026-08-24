@@ -4,7 +4,6 @@
 import { corQueJoga, temMateFavoravel, valorComparavel } from '../engine/avaliacao'
 import type { Cor } from '../engine/avaliacao'
 import type { AnaliseDePosicao, Avaliacao } from '../engine/tipos'
-import { estaNaTeoria } from './aberturas'
 import { contarLancesLegais, materialEntregue } from './material'
 import { PARAMETROS_DE_CLASSIFICACAO as P } from './parametros'
 
@@ -63,6 +62,7 @@ export function classificarLance(
   antes: AnaliseDePosicao,
   depois: AnaliseDePosicao,
   lanceJogadoUci: string,
+  dentroDaTeoria: boolean,
 ): LanceClassificado {
   const cor: Cor = corQueJoga(antes.fen)
 
@@ -115,11 +115,24 @@ export function classificarLance(
     }
   }
 
-  // --- "Livro": depende da base de aberturas, hoje desligada --------------
-  if (estaNaTeoria(antes.fen)) {
+  // --- "Livro" ------------------------------------------------------------
+  // Duas condições recortam o rótulo, e cada uma corrige um erro observado:
+  //
+  // - Perda pequena. A spec é explícita que "Erro continua valendo normalmente
+  //   lá dentro": `2. g4` no mate do bobo está numa posição nomeada (Barnes
+  //   Opening: Fool's Mate) e nem por isso deixa de ser capivara.
+  // - A partida não acaba aqui. A base nomeia até a posição de mate do mate do
+  //   bobo, e chamar `2... Qh4#` de "lance de livro" é absurdo.
+  //
+  // Vem antes de Brilhante/Excelente/Melhor porque é aqui que a supressão de
+  // "Brilhante" dentro da teoria acontece: teoria não é achado do jogador — a
+  // armadilha do `sofia-bot`, em que `1. e4` virava brilhante por bater com o
+  // motor.
+  const acabaAqui = depois.avaliacao.tipo === 'fimDeJogo'
+  if (dentroDaTeoria && perdaCp < P.LIMIAR_IMPRECISAO_CP && !acabaAqui) {
     return {
       classificacao: 'livro',
-      motivo: 'Posição ainda dentro de teoria de abertura conhecida.',
+      motivo: 'Lance ainda dentro de teoria de abertura conhecida.',
       perdaCp,
       alternativa: null,
     }
@@ -133,9 +146,8 @@ export function classificarLance(
       entrega.entregue >= P.LIMIAR_DE_SACRIFICIO_CP &&
       perdaCp <= P.MARGEM_DE_SACRIFICIO_CP
 
-    // A supressão por teoria está aqui, mas inerte: sem base de aberturas,
-    // `estaNaTeoria` devolve `false` para tudo.
-    if (sacrificou && !estaNaTeoria(antes.fen)) {
+    // Fora de teoria por construção: o ramo de "Livro" acima já retornou.
+    if (sacrificou) {
       return {
         classificacao: 'brilhante',
         motivo: `Sacrifício de ${emPeoes(entrega.entregue)} peões que o motor confirma como o melhor lance.`,
@@ -170,6 +182,9 @@ export function classificarLance(
     }
   }
 
+  // Lance que não era o principal do motor: julgado pela perda. Isso inclui
+  // lance dentro da teoria cuja perda passou do limiar — que é justamente o
+  // "Erro continua valendo lá dentro" da spec.
   const { classificacao, motivo } = classificarPelaPerda(perdaCp)
   return { classificacao, motivo, perdaCp, alternativa }
 }

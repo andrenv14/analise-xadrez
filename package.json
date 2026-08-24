@@ -9,7 +9,9 @@
     "prebuild": "node scripts/copiar-motor.mjs",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "aberturas": "node scripts/gerar-aberturas.mjs",
+    "calibrar": "node scripts/calibrar.mjs"
   },
   "dependencies": {
     "chess.js": "^1.4.0",

@@ -1,33 +1,77 @@
+import baseBruta from './aberturas.json'
+
 /**
- * Gancho da base de aberturas — **desligado**.
+ * Base de aberturas — 3.810 posições de `lichess-org/chess-openings` (CC0-1.0,
+ * domínio público), gerada por `scripts/gerar-aberturas.mjs`.
  *
- * A base (subconjunto de `lichess-org/chess-openings`, domínio público) ainda
- * não foi importada para este projeto. Enquanto ela não existir:
- *
- * - "Livro" **não é atribuído** a lance nenhum;
- * - "Brilhante" **não é suprimido** por teoria.
- *
- * Deliberadamente não há heurística substituta. Chutar teoria por número de
- * lances ("os 10 primeiros são abertura") produziria exatamente o erro que a
- * spec manda evitar: `1. e4` virando achado do jogador.
- *
- * Para ligar: preencher `BASE_DE_ABERTURAS` com uma implementação que consulte
- * o JSON estático. Nada mais no código precisa mudar.
+ * São 432 KB crus, 60 KB comprimidos, embutidos no bundle. Ao lado dos 7 MB do
+ * WASM do motor isso é ruído, então a base entra inteira — sem subconjunto.
  */
 
-export type BaseDeAberturas = {
-  /** A posição está dentro de teoria de abertura conhecida? */
-  estaNaTeoria(fen: string): boolean
-  /** Nome da abertura, quando conhecido. */
-  nome(fen: string): string | null
+type BaseDeAberturas = {
+  /** Maior profundidade, em meios-lances, de qualquer entrada da base. */
+  profundidadeMaxima: number
+  /** Chave da posição -> "ECO|Nome". */
+  posicoes: Record<string, string>
 }
 
-export const BASE_DE_ABERTURAS: BaseDeAberturas | null = null
+const BASE = baseBruta as BaseDeAberturas
 
-/** Enquanto não houver base, nenhuma posição é considerada teoria. */
-export function estaNaTeoria(fen: string): boolean {
-  return BASE_DE_ABERTURAS?.estaNaTeoria(fen) ?? false
+export type Abertura = {
+  /** Classificação ECO, ex: `C41`. */
+  eco: string
+  /** Nome em inglês, ex: `Philidor Defense`. */
+  nome: string
 }
 
-/** `true` quando a classificação "Livro" pode ser atribuída. */
-export const BASE_DE_ABERTURAS_DISPONIVEL = BASE_DE_ABERTURAS !== null
+/**
+ * Chave de posição: os quatro primeiros campos da FEN, sem os contadores.
+ *
+ * Precisa ser idêntica à do gerador — e é, porque os dois lados calculam a FEN
+ * com o mesmo chess.js.
+ */
+function chaveDaPosicao(fen: string): string {
+  return fen.split(' ').slice(0, 4).join(' ')
+}
+
+function procurar(fen: string): Abertura | null {
+  const registro = BASE.posicoes[chaveDaPosicao(fen)]
+  if (!registro) return null
+  const separador = registro.indexOf('|')
+  return { eco: registro.slice(0, separador), nome: registro.slice(separador + 1) }
+}
+
+/**
+ * Até que meio-lance a partida ainda está em teoria conhecida.
+ *
+ * Devolve o maior ply cuja posição resultante está na base — não o primeiro
+ * buraco. A distinção importa: a base nomeia posições, não cobre todos os
+ * lances de uma linha. Na Najdorf, a posição após `4.Nxd4` não tem nome, mas a
+ * de `4...Nf6` tem; cortar no primeiro buraco encerraria a teoria no lance 3 de
+ * uma partida que segue no livro até o lance 8.
+ *
+ * A busca para na profundidade máxima da base. Sem esse limite, uma posição de
+ * meio-jogo que por acaso batesse com uma entrada profunda reabriria a teoria
+ * no lance 40, o que só poderia ser coincidência.
+ *
+ * `fensPorPly[j]` é a posição depois do meio-lance `j + 1`.
+ */
+export function limiteDaTeoria(fensPorPly: string[]): number {
+  const teto = Math.min(fensPorPly.length, BASE.profundidadeMaxima)
+  for (let ply = teto; ply >= 1; ply--) {
+    if (chaveDaPosicao(fensPorPly[ply - 1]) in BASE.posicoes) return ply
+  }
+  return 0
+}
+
+/**
+ * Abertura da partida: a mais específica reconhecida.
+ *
+ * Anda de trás para frente a partir do limite da teoria, que é o que a própria
+ * fonte recomenda — assim uma partida que transpõe recebe o nome da linha em
+ * que efetivamente caiu, e não o do primeiro lance.
+ */
+export function aberturaDaPartida(fensPorPly: string[]): Abertura | null {
+  const limite = limiteDaTeoria(fensPorPly)
+  return limite === 0 ? null : procurar(fensPorPly[limite - 1])
+}
