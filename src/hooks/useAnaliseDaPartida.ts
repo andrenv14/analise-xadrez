@@ -23,13 +23,17 @@ const PROGRESSO_OCIOSO: ProgressoDaAnalise = {
 }
 
 /**
- * Analisa a partida em segundo plano, da posição inicial até a última.
+ * Analisa a partida em segundo plano.
  *
- * O array devolvido tem uma entrada por posição — `null` enquanto o motor não
- * chegou nela. A interface continua navegável o tempo todo: nada aqui bloqueia
- * a renderização.
+ * A ordem **não** é do primeiro ao último lance: a posição que o usuário está
+ * olhando fura a fila. Em máquina lenta, esperar o motor atravessar a partida
+ * inteira para ver o lance 20 é a maior fonte de espera percebida — e é espera
+ * por resultado que o usuário não pediu.
+ *
+ * O array devolvido tem uma entrada por posição, `null` onde o motor ainda não
+ * chegou. Nada aqui bloqueia a renderização.
  */
-export function useAnaliseDaPartida(jogo: ParsedGame | null) {
+export function useAnaliseDaPartida(jogo: ParsedGame | null, indiceSelecionado: number) {
   const [analises, setAnalises] = useState<(AnaliseDePosicao | null)[]>([])
   const [progresso, setProgresso] = useState<ProgressoDaAnalise>(PROGRESSO_OCIOSO)
 
@@ -37,6 +41,13 @@ export function useAnaliseDaPartida(jogo: ParsedGame | null) {
   // Cada partida analisada ganha uma geração; resultados de gerações antigas
   // que ainda estejam no ar são descartados em vez de sujar a tela.
   const geracaoRef = useRef(0)
+
+  // O laço de análise lê a seleção atual a cada volta. Passar por ref em vez
+  // de dependência evita reiniciar a análise a cada tecla de navegação.
+  const selecaoRef = useRef(indiceSelecionado)
+  useEffect(() => {
+    selecaoRef.current = indiceSelecionado
+  }, [indiceSelecionado])
 
   useEffect(() => {
     return () => {
@@ -80,15 +91,25 @@ export function useAnaliseDaPartida(jogo: ParsedGame | null) {
         if (desatualizada()) return
         setProgresso((p) => ({ ...p, estado: 'analisando' }))
 
-        for (let i = 0; i < total; i++) {
-          const analise = await motor.analisar(fenNoIndice(jogo, i))
+        // Posições que faltam, em ordem. A selecionada sai daqui na frente.
+        const pendentes = new Set<number>(Array.from({ length: total }, (_, i) => i))
+
+        while (pendentes.size > 0) {
+          const selecionada = selecaoRef.current
+          const proxima = pendentes.has(selecionada)
+            ? selecionada
+            : Math.min(...pendentes)
+
+          const analise = await motor.analisar(fenNoIndice(jogo, proxima))
           if (desatualizada()) return
+
+          pendentes.delete(proxima)
           setAnalises((anteriores) => {
             const copia = [...anteriores]
-            copia[i] = analise
+            copia[proxima] = analise
             return copia
           })
-          setProgresso((p) => ({ ...p, concluidas: i + 1 }))
+          setProgresso((p) => ({ ...p, concluidas: total - pendentes.size }))
         }
 
         if (desatualizada()) return

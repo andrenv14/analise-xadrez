@@ -1,14 +1,18 @@
 import { useEffect, useRef } from 'react'
 import type { Ply } from '../chess/pgn'
+import type { LanceClassificado } from '../analise/classificacao'
+import { ROTULOS } from '../analise/rotulos'
 
 type Props = {
   plies: Ply[]
   /** 0 = posição inicial; n = depois do n-ésimo meio-lance. */
   indiceAtual: number
+  /** Uma entrada por meio-lance; `null` onde o motor ainda não classificou. */
+  classificacoes: (LanceClassificado | null)[]
   onSelecionar: (indice: number) => void
 }
 
-export function MoveList({ plies, indiceAtual, onSelecionar }: Props) {
+export function MoveList({ plies, indiceAtual, classificacoes, onSelecionar }: Props) {
   const atualRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
@@ -30,6 +34,20 @@ export function MoveList({ plies, indiceAtual, onSelecionar }: Props) {
     }
   }
 
+  const marcador = (ply: Ply) => {
+    const classificado = classificacoes[ply.ply - 1]
+    if (!classificado?.classificacao) return null
+    const rotulo = ROTULOS[classificado.classificacao]
+    return (
+      <span
+        className={`marcador marcador--${classificado.classificacao}`}
+        title={`${rotulo.nome}: ${classificado.motivo}`}
+      >
+        {rotulo.simbolo}
+      </span>
+    )
+  }
+
   const botao = (ply: Ply | undefined) => {
     if (!ply) return <span className="move move--vazio">…</span>
     const selecionado = ply.ply === indiceAtual
@@ -42,6 +60,7 @@ export function MoveList({ plies, indiceAtual, onSelecionar }: Props) {
         onClick={() => onSelecionar(ply.ply)}
       >
         {ply.san}
+        {marcador(ply)}
       </button>
     )
   }
@@ -59,7 +78,10 @@ export function MoveList({ plies, indiceAtual, onSelecionar }: Props) {
         </button>
       </li>
       {linhas.map((linha) => (
-        <li key={`${linha.numero}-${linha.brancas?.ply ?? linha.pretas?.ply}`} className="linha-lances">
+        <li
+          key={`${linha.numero}-${linha.brancas?.ply ?? linha.pretas?.ply}`}
+          className="linha-lances"
+        >
           <span className="numero-lance">{linha.numero}.</span>
           {botao(linha.brancas)}
           {botao(linha.pretas)}

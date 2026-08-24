@@ -93,3 +93,40 @@ export function fracaoDasBrancas(avaliacao: Avaliacao): number {
       return 0.5
   }
 }
+
+/**
+ * Valor de um mate na escala de centipeões, para permitir comparação.
+ * Bem acima de qualquer vantagem material plausível.
+ */
+export const VALOR_DE_MATE_CP = 30_000
+
+/**
+ * Reduz uma avaliação a um número comparável em centipeões, do ponto de vista
+ * da cor dada. Mate vira um valor grande — mate mais curto vale mais, para
+ * que trocar mate em 2 por mate em 6 ainda conte como piora.
+ */
+export function valorComparavel(avaliacao: Avaliacao, cor: Cor): number {
+  const sinal = cor === 'w' ? 1 : -1
+  switch (avaliacao.tipo) {
+    case 'centipeoes':
+      return sinal * avaliacao.centipeoes
+    case 'mateEm':
+      return (
+        sinal *
+        Math.sign(avaliacao.lances) *
+        (VALOR_DE_MATE_CP - Math.abs(avaliacao.lances) * 100)
+      )
+    case 'fimDeJogo':
+      if (avaliacao.resultado === 'empate') return 0
+      return sinal * (avaliacao.resultado === 'brancasVencem' ? VALOR_DE_MATE_CP : -VALOR_DE_MATE_CP)
+  }
+}
+
+/** Há mate forçado a favor da cor dada nesta avaliação? */
+export function temMateFavoravel(avaliacao: Avaliacao, cor: Cor): boolean {
+  if (avaliacao.tipo === 'mateEm') return cor === 'w' ? avaliacao.lances > 0 : avaliacao.lances < 0
+  if (avaliacao.tipo === 'fimDeJogo') {
+    return avaliacao.resultado === (cor === 'w' ? 'brancasVencem' : 'pretasVencem')
+  }
+  return false
+}

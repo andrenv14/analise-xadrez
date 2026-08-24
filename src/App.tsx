@@ -2,21 +2,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Chessboard } from 'react-chessboard'
 import { EvalBar } from './components/EvalBar'
 import { MoveList } from './components/MoveList'
+import { PainelDoLance } from './components/PainelDoLance'
 import { ProgressoDoMotor } from './components/ProgressoDoMotor'
 import { fenNoIndice, parsePgn, PgnError } from './chess/pgn'
 import type { ParsedGame } from './chess/pgn'
-import { uciParaSan } from './chess/notacao'
-import { descreverAvaliacao, formatarAvaliacao } from './engine'
+import { classificarPartida } from './analise/classificarPartida'
+import { PGN_EXEMPLO } from './chess/partidaDeExemplo'
 import { useAnaliseDaPartida } from './hooks/useAnaliseDaPartida'
 
-const PGN_EXEMPLO = `[Event "Partida de exemplo"]
-[White "Morphy"]
-[Black "Duque de Brunswick e Conde Isouard"]
-[Result "1-0"]
-
-1. e4 e5 2. Nf3 d6 3. d4 Bg4 4. dxe5 Bxf3 5. Qxf3 dxe5 6. Bc4 Nf6 7. Qb3 Qe7
-8. Nc3 c6 9. Bg5 b5 10. Nxb5 cxb5 11. Bxb5+ Nbd7 12. O-O-O Rd8 13. Rxd7 Rxd7
-14. Rd1 Qe6 15. Bxd7+ Nxd7 16. Qb8+ Nxb8 17. Rd8# 1-0`
 
 export default function App() {
   const [pgn, setPgn] = useState('')
@@ -83,12 +76,20 @@ export default function App() {
     return () => window.removeEventListener('keydown', aoTeclar)
   }, [jogo])
 
-  const { analises, progresso } = useAnaliseDaPartida(jogo)
+  const { analises, progresso } = useAnaliseDaPartida(jogo, indice)
+
+  const classificacoes = useMemo(
+    () => (jogo ? classificarPartida(jogo, analises) : []),
+    [jogo, analises],
+  )
 
   const fen = useMemo(() => (jogo ? fenNoIndice(jogo, indice) : null), [jogo, indice])
+  const fenAnterior = useMemo(
+    () => (jogo && indice > 0 ? fenNoIndice(jogo, indice - 1) : null),
+    [jogo, indice],
+  )
   const analiseAtual = analises[indice] ?? null
-  const melhorLanceSan =
-    analiseAtual?.melhorLance && fen ? uciParaSan(fen, analiseAtual.melhorLance) : null
+  const classificadoAtual = indice > 0 ? (classificacoes[indice - 1] ?? null) : null
 
   const lanceAtual = jogo && indice > 0 ? jogo.plies[indice - 1] : null
   const destaques = lanceAtual
@@ -198,47 +199,19 @@ export default function App() {
                 {indice} / {jogo.plies.length}
               </span>
             </p>
-            <div className="painel-motor">
-              {analiseAtual ? (
-                <>
-                  <p className="avaliacao">
-                    <span className="avaliacao__numero">
-                      {formatarAvaliacao(analiseAtual.avaliacao)}
-                    </span>
-                    <span className="avaliacao__texto">
-                      {descreverAvaliacao(analiseAtual.avaliacao)}
-                    </span>
-                  </p>
-                  <p className="melhor-lance">
-                    {analiseAtual.melhorLance ? (
-                      <>
-                        Melhor lance: <strong>{melhorLanceSan ?? analiseAtual.melhorLance}</strong>
-                        {/* Em mate forçado o Stockfish reporta profundidades
-                            absurdas (245 e afins) porque segue iterando sobre
-                            uma linha já resolvida: o número é real, mas não
-                            informa nada. */}
-                        {analiseAtual.avaliacao.tipo === 'centipeoes' && (
-                          <span className="profundidade">
-                            {' '}
-                            · profundidade {analiseAtual.profundidade}
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      'A partida termina aqui.'
-                    )}
-                  </p>
-                </>
-              ) : (
-                <p className="avaliacao avaliacao--pendente">
-                  {progresso.estado === 'erro'
-                    ? 'Motor indisponível.'
-                    : 'Aguardando o motor chegar nesta posição…'}
-                </p>
-              )}
-            </div>
+            <PainelDoLance
+              analise={analiseAtual}
+              fenAnterior={fenAnterior}
+              classificado={classificadoAtual}
+              estadoDoMotor={progresso.estado}
+            />
 
-            <MoveList plies={jogo.plies} indiceAtual={indice} onSelecionar={irPara} />
+            <MoveList
+              plies={jogo.plies}
+              indiceAtual={indice}
+              classificacoes={classificacoes}
+              onSelecionar={irPara}
+            />
           </aside>
         </section>
       )}

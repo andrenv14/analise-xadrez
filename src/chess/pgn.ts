@@ -8,6 +8,8 @@ export type Ply = {
   moveNumber: number
   color: 'w' | 'b'
   san: string
+  /** O mesmo lance em notação UCI (`e2e4`, `e7e8q`) — a língua do motor. */
+  uci: string
   from: string
   to: string
   /** FEN da posição *depois* deste meio-lance. */
@@ -71,6 +73,7 @@ export function parsePgn(pgn: string): ParsedGame {
     moveNumber: primeiroNumero + Math.floor((i + (comecaComPretas ? 1 : 0)) / 2),
     color: lance.color,
     san: lance.san,
+    uci: lance.lan,
     from: lance.from,
     to: lance.to,
     fen: lance.after,

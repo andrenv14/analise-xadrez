@@ -14,22 +14,38 @@ export type Avaliacao =
   /** A posição já acabou no tabuleiro — não há lance a jogar. */
   | { tipo: 'fimDeJogo'; resultado: 'brancasVencem' | 'pretasVencem' | 'empate' }
 
+/** Uma das linhas candidatas devolvidas pelo motor (MultiPV). */
+export type LinhaDoMotor = {
+  /** Primeiro lance da linha, em notação UCI (`e2e4`, `e7e8q`). */
+  lance: string
+  avaliacao: Avaliacao
+  /** Variante principal completa, em UCI. Útil para inspecionar sacrifícios. */
+  variante: string[]
+  profundidade: number
+}
+
 export type AnaliseDePosicao = {
   /** FEN analisada, para conferência. */
   fen: string
-  avaliacao: Avaliacao
   /**
-   * Melhor lance na notação do UCI (ex: `e2e4`, `e7e8q`).
-   * `null` quando a posição já acabou.
+   * Linhas candidatas em ordem de preferência **do lado que está para jogar**
+   * — a melhor primeiro. Não reordenar pelo ponto de vista das brancas: a
+   * ordem é o que diz se um lance era o único bom.
    */
+  linhas: LinhaDoMotor[]
+  /** Avaliação da posição: a da melhor linha. */
+  avaliacao: Avaliacao
+  /** Melhor lance em UCI. `null` quando a posição já acabou. */
   melhorLance: string | null
   /** Profundidade atingida na busca. */
   profundidade: number
 }
 
 export type OpcoesDeAnalise = {
-  /** Tempo de busca por posição, em milissegundos. */
-  tempoMs: number
+  /** Profundidade de busca por posição. */
+  profundidade: number
+  /** Quantas linhas candidatas pedir ao motor (`MultiPV`). */
+  linhas: number
 }
 
 export interface Motor {

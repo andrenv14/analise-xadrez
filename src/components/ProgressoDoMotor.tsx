@@ -18,7 +18,10 @@ export function ProgressoDoMotor({ progresso }: { progresso: ProgressoDaAnalise 
       ? 'Carregando o motor…'
       : estado === 'concluida'
         ? `Análise concluída — ${total} posições`
-        : `Analisando ${concluidas + 1} de ${total}`
+        // A fila prioriza a posição selecionada, então a ordem não é
+        // sequencial: contar as concluídas é honesto, dizer "analisando a 12"
+        // não seria.
+        : `Analisando — ${concluidas} de ${total} posições`
 
   return (
     <div className={estado === 'concluida' ? 'progresso progresso--pronto' : 'progresso'}>

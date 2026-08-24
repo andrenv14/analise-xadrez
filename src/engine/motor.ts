@@ -1,40 +1,18 @@
-import { corQueJoga, paraPontoDeVistaDasBrancas } from './avaliacao'
-import { CAMINHO_DO_WORKER, TEMPO_DE_ANALISE_POR_LANCE_MS } from './configuracao'
+import { CAMINHO_DO_WORKER, LINHAS_DO_MOTOR, PROFUNDIDADE_DE_ANALISE } from './configuracao'
+import { lerInfo, lerMelhorLance, montarAnalise } from './protocolo'
+import type { InfoDeLinha } from './protocolo'
 import { ConexaoUci } from './uci'
 import { AnaliseCancelada, ErroDoMotor } from './tipos'
 import type { AnaliseDePosicao, Motor, OpcoesDeAnalise } from './tipos'
 
+/** Rede de segurança por posição. Não participa da busca: só evita travar. */
+const TETO_POR_POSICAO_MS = 120_000
+
 type Tarefa = {
   fen: string
-  tempoMs: number
+  opcoes: OpcoesDeAnalise
   resolver: (analise: AnaliseDePosicao) => void
   rejeitar: (erro: unknown) => void
-}
-
-type ScoreCru = { tipo: 'cp' | 'mate'; valor: number; profundidade: number }
-
-/**
- * Lê o score de uma linha `info` do UCI.
- *
- * Linhas marcadas como `lowerbound`/`upperbound` são descartadas: o valor
- * nelas é um limite da janela de busca, não uma avaliação.
- */
-function lerScore(linha: string): ScoreCru | null {
-  if (linha.includes(' lowerbound') || linha.includes(' upperbound')) return null
-  const score = linha.match(/\bscore (cp|mate) (-?\d+)/)
-  if (!score) return null
-  const profundidade = linha.match(/\bdepth (\d+)/)
-  return {
-    tipo: score[1] as 'cp' | 'mate',
-    valor: Number(score[2]),
-    profundidade: profundidade ? Number(profundidade[1]) : 0,
-  }
-}
-
-/** Extrai o lance de uma linha `bestmove`. `null` quando a posição acabou. */
-function lerMelhorLance(linha: string): string | null {
-  const lance = linha.split(/\s+/)[1]
-  return !lance || lance === '(none)' ? null : lance
 }
 
 class MotorStockfish implements Motor {
@@ -42,6 +20,8 @@ class MotorStockfish implements Motor {
   private fila: Tarefa[] = []
   private tarefaAtual: Tarefa | null = null
   private ocupado = false
+  /** Última quantidade de linhas configurada, para não reenviar à toa. */
+  private linhasConfiguradas: number | null = null
 
   constructor(caminhoDoWorker: string) {
     this.conexao = new ConexaoUci(caminhoDoWorker)
@@ -52,9 +32,12 @@ class MotorStockfish implements Motor {
   }
 
   analisar(fen: string, opcoes: Partial<OpcoesDeAnalise> = {}): Promise<AnaliseDePosicao> {
-    const tempoMs = opcoes.tempoMs ?? TEMPO_DE_ANALISE_POR_LANCE_MS
+    const completas: OpcoesDeAnalise = {
+      profundidade: opcoes.profundidade ?? PROFUNDIDADE_DE_ANALISE,
+      linhas: opcoes.linhas ?? LINHAS_DO_MOTOR,
+    }
     return new Promise<AnaliseDePosicao>((resolver, rejeitar) => {
-      this.fila.push({ fen, tempoMs, resolver, rejeitar })
+      this.fila.push({ fen, opcoes: completas, resolver, rejeitar })
       void this.girarFila()
     })
   }
@@ -68,6 +51,7 @@ class MotorStockfish implements Motor {
         const tarefa = this.fila.shift()!
         this.tarefaAtual = tarefa
         try {
+          await this.limparTabelaDeHash()
           tarefa.resolver(await this.buscar(tarefa))
         } catch (erro) {
           tarefa.rejeitar(erro)
@@ -86,14 +70,31 @@ class MotorStockfish implements Motor {
     }
   }
 
+  /**
+   * Zera a tabela de hash antes de cada posição.
+   *
+   * Sem isso o resultado de uma posição depende de quais posições foram
+   * analisadas antes dela — e a fila prioriza a posição que o usuário está
+   * olhando, então essa ordem muda conforme ele navega. Profundidade fixa sem
+   * hash limpo seria trocar "irreprodutível pelo relógio" por
+   * "irreprodutível pela navegação".
+   */
+  private async limparTabelaDeHash(): Promise<void> {
+    this.conexao.enviar('ucinewgame')
+    this.conexao.enviar('isready')
+    await this.conexao.esperarLinha((l) => l === 'readyok')
+  }
+
   private buscar(tarefa: Tarefa): Promise<AnaliseDePosicao> {
     return new Promise<AnaliseDePosicao>((resolver, rejeitar) => {
-      let melhorScore: ScoreCru | null = null
+      // O motor reemite cada linha do MultiPV a cada iteração de profundidade;
+      // guardar a última por índice deixa o resultado mais fundo de cada uma.
+      const infos = new Map<number, InfoDeLinha>()
 
       const parar = this.conexao.ouvir((linha) => {
         if (linha.startsWith('info')) {
-          const score = lerScore(linha)
-          if (score) melhorScore = score
+          const info = lerInfo(linha)
+          if (info) infos.set(info.multipv, info)
           return
         }
         if (!linha.startsWith('bestmove')) return
@@ -101,33 +102,27 @@ class MotorStockfish implements Motor {
         parar()
         clearTimeout(cronometro)
 
-        const melhorLance = lerMelhorLance(linha)
-        if (!melhorScore) {
+        const analise = montarAnalise(tarefa.fen, infos, lerMelhorLance(linha))
+        if (!analise) {
           rejeitar(new ErroDoMotor('O motor terminou a busca sem informar avaliação.'))
           return
         }
-        const score: ScoreCru = melhorScore
-        resolver({
-          fen: tarefa.fen,
-          avaliacao: paraPontoDeVistaDasBrancas(
-            { tipo: score.tipo, valor: score.valor },
-            corQueJoga(tarefa.fen),
-            melhorLance !== null,
-          ),
-          melhorLance,
-          profundidade: score.profundidade,
-        })
+        resolver(analise)
       })
 
-      // Margem generosa sobre o movetime: o motor às vezes estoura o orçamento
-      // para terminar a iteração corrente.
+      // Com profundidade fixa não há orçamento de tempo, só uma rede de
+      // segurança: se uma posição passar disso, algo está errado.
       const cronometro = setTimeout(() => {
         parar()
         rejeitar(new ErroDoMotor('O motor não devolveu um lance a tempo.'))
-      }, tarefa.tempoMs + 30_000)
+      }, TETO_POR_POSICAO_MS)
 
+      if (this.linhasConfiguradas !== tarefa.opcoes.linhas) {
+        this.conexao.enviar(`setoption name MultiPV value ${tarefa.opcoes.linhas}`)
+        this.linhasConfiguradas = tarefa.opcoes.linhas
+      }
       this.conexao.enviar(`position fen ${tarefa.fen}`)
-      this.conexao.enviar(`go movetime ${tarefa.tempoMs}`)
+      this.conexao.enviar(`go depth ${tarefa.opcoes.profundidade}`)
     })
   }
 

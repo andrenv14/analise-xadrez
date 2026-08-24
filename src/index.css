@@ -361,3 +361,78 @@ button.primario {
   color: var(--texto-fraco);
   font-size: 0.78rem;
 }
+
+/* --- Classificação de lance -------------------------------------------- */
+/* Paleta própria. O vocabulário vem do chess.com; a obra visual, não. */
+
+.marcador {
+  margin-left: 0.28rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  vertical-align: baseline;
+}
+
+.marcador--brilhante { color: #35c4c4; }
+.marcador--excelente { color: #6fbf73; }
+.marcador--melhor    { color: #8ea3b8; }
+.marcador--livro     { color: #b09272; }
+.marcador--bom       { color: #6b7480; }
+.marcador--imprecisao { color: #e0b95f; }
+.marcador--erro      { color: #e08a4a; }
+.marcador--capivara  { color: #e0645f; }
+.marcador--perdeu    { color: #c264c8; }
+
+.move--selecionado .marcador {
+  color: #10130f;
+}
+
+.classificacao {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--borda);
+}
+
+.classificacao__titulo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: 0 0 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.classificacao__simbolo {
+  font-size: 0.9rem;
+}
+
+.classificacao__titulo--brilhante { color: #35c4c4; }
+.classificacao__titulo--excelente { color: #6fbf73; }
+.classificacao__titulo--melhor    { color: #8ea3b8; }
+.classificacao__titulo--livro     { color: #b09272; }
+.classificacao__titulo--bom       { color: var(--texto-fraco); }
+.classificacao__titulo--imprecisao { color: #e0b95f; }
+.classificacao__titulo--erro      { color: #e08a4a; }
+.classificacao__titulo--capivara  { color: #e0645f; }
+.classificacao__titulo--perdeu    { color: #c264c8; }
+.classificacao__titulo--neutro    { color: var(--texto-fraco); }
+
+.classificacao__motivo {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--texto-fraco);
+  line-height: 1.45;
+}
+
+.alternativa {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+}
+
+.alternativa strong {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.alternativa__avaliacao {
+  color: var(--texto-fraco);
+  font-variant-numeric: tabular-nums;
+}
