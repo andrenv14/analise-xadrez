@@ -27,3 +27,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Binários do Stockfish: copiados de node_modules pelo script predev/prebuild
+public/engine/

@@ -1,8 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Chessboard } from 'react-chessboard'
+import { EvalBar } from './components/EvalBar'
 import { MoveList } from './components/MoveList'
+import { ProgressoDoMotor } from './components/ProgressoDoMotor'
 import { fenNoIndice, parsePgn, PgnError } from './chess/pgn'
 import type { ParsedGame } from './chess/pgn'
+import { uciParaSan } from './chess/notacao'
+import { descreverAvaliacao, formatarAvaliacao } from './engine'
+import { useAnaliseDaPartida } from './hooks/useAnaliseDaPartida'
 
 const PGN_EXEMPLO = `[Event "Partida de exemplo"]
 [White "Morphy"]
@@ -78,7 +83,12 @@ export default function App() {
     return () => window.removeEventListener('keydown', aoTeclar)
   }, [jogo])
 
+  const { analises, progresso } = useAnaliseDaPartida(jogo)
+
   const fen = useMemo(() => (jogo ? fenNoIndice(jogo, indice) : null), [jogo, indice])
+  const analiseAtual = analises[indice] ?? null
+  const melhorLanceSan =
+    analiseAtual?.melhorLance && fen ? uciParaSan(fen, analiseAtual.melhorLance) : null
 
   const lanceAtual = jogo && indice > 0 ? jogo.plies[indice - 1] : null
   const destaques = lanceAtual
@@ -122,20 +132,25 @@ export default function App() {
         )}
       </section>
 
+      {jogo && fen && <ProgressoDoMotor progresso={progresso} />}
+
       {jogo && fen && (
         <section className="partida">
           <div className="coluna-tabuleiro">
-            <div className="tabuleiro">
-              <Chessboard
-                options={{
-                  id: 'tabuleiro-analise',
-                  position: fen,
-                  boardOrientation: orientacao,
-                  allowDragging: false,
-                  showNotation: true,
-                  squareStyles: destaques,
-                }}
-              />
+            <div className="tabuleiro-com-eval">
+              <EvalBar avaliacao={analiseAtual?.avaliacao ?? null} orientacao={orientacao} />
+              <div className="tabuleiro">
+                <Chessboard
+                  options={{
+                    id: 'tabuleiro-analise',
+                    position: fen,
+                    boardOrientation: orientacao,
+                    allowDragging: false,
+                    showNotation: true,
+                    squareStyles: destaques,
+                  }}
+                />
+              </div>
             </div>
             <div className="controles">
               <button type="button" onClick={() => irPara(0)} disabled={indice === 0}>
@@ -183,6 +198,37 @@ export default function App() {
                 {indice} / {jogo.plies.length}
               </span>
             </p>
+            <div className="painel-motor">
+              {analiseAtual ? (
+                <>
+                  <p className="avaliacao">
+                    <span className="avaliacao__numero">
+                      {formatarAvaliacao(analiseAtual.avaliacao)}
+                    </span>
+                    <span className="avaliacao__texto">
+                      {descreverAvaliacao(analiseAtual.avaliacao)}
+                    </span>
+                  </p>
+                  <p className="melhor-lance">
+                    {analiseAtual.melhorLance ? (
+                      <>
+                        Melhor lance: <strong>{melhorLanceSan ?? analiseAtual.melhorLance}</strong>
+                        <span className="profundidade"> · profundidade {analiseAtual.profundidade}</span>
+                      </>
+                    ) : (
+                      'A partida termina aqui.'
+                    )}
+                  </p>
+                </>
+              ) : (
+                <p className="avaliacao avaliacao--pendente">
+                  {progresso.estado === 'erro'
+                    ? 'Motor indisponível.'
+                    : 'Aguardando o motor chegar nesta posição…'}
+                </p>
+              )}
+            </div>
+
             <MoveList plies={jogo.plies} indiceAtual={indice} onSelecionar={irPara} />
           </aside>
         </section>
