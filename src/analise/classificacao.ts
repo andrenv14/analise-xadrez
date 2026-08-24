@@ -163,7 +163,21 @@ export function classificarLance(
     }
 
     // --- "Excelente": era o único lance que segurava a posição ------------
-    const segunda = antes.linhas[1] ?? null
+    // Dois recortes, cada um de um caso observado:
+    //
+    // - Dar mate não é segurar a posição, é ganhar. `17. Rd8#` saía como
+    //   "Excelente" porque as alternativas eram muito piores — o que é
+    //   verdade e irrelevante.
+    // - A posição precisa continuar defensável. Em posição já decidida a
+    //   distância para a segunda linha fica enorme por natureza: `15... Nxd7`
+    //   escolhia entre perder devagar e levar mate na hora, e isso virava
+    //   "o único lance que segurava a posição".
+    const deuMate =
+      depois.avaliacao.tipo === 'fimDeJogo' &&
+      depois.avaliacao.resultado === (cor === 'w' ? 'brancasVencem' : 'pretasVencem')
+    const aindaDefensavel = valorDepois >= -P.LIMIAR_DE_POSICAO_DEFENSAVEL_CP
+
+    const segunda = deuMate || !aindaDefensavel ? null : (antes.linhas[1] ?? null)
     if (segunda) {
       // Mesmo teto usado na perda: sem ele, comparar um mate com uma linha
       // qualquer produz "a segunda opção perde 303.88 peões" na tela.

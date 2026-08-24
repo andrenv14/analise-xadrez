@@ -68,4 +68,21 @@ export const PARAMETROS_DE_CLASSIFICACAO = {
    * sacrifício, é a derrota seguindo seu curso.
    */
   LIMIAR_DE_POSICAO_JOGAVEL_CP: 300,
+
+  /**
+   * "Excelente" — o quanto quem jogou pode estar atrás e o lance ainda contar
+   * como defesa, não como adiamento.
+   *
+   * Deliberadamente **mais permissivo** que o piso do Brilhante, porque os
+   * dois rótulos descrevem coisas diferentes. Entregar material estando pior é
+   * quase sempre desespero; achar o único lance que evita o desastre estando
+   * pior é exatamente a defesa que merece elogio. Defesa prática ganha partida
+   * — sacrifício desesperado, não.
+   *
+   * 600cp é o dobro do piso do Brilhante, logo além da torre de desvantagem.
+   * Até aí a defesa é recurso real. Além disso o lance não segura mais nada,
+   * só muda o jeito como a partida termina — foi o que produziu `15... Nxd7`
+   * como "Excelente" numa posição que levava mate em dois.
+   */
+  LIMIAR_DE_POSICAO_DEFENSAVEL_CP: 600,
 } as const
