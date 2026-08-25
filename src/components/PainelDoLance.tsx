@@ -1,6 +1,8 @@
 import { descreverAvaliacao, formatarAvaliacao } from '../engine'
 import type { AnaliseDePosicao } from '../engine'
 import { uciParaSan } from '../chess/notacao'
+import type { Desfecho } from '../chess/pgn'
+import { DesfechoDaPartida } from './DesfechoDaPartida'
 import type { LanceClassificado } from '../analise/classificacao'
 import { ROTULOS } from '../analise/rotulos'
 import type { EstadoDaAnalise } from '../hooks/useAnaliseDaPartida'
@@ -15,10 +17,18 @@ type Props = {
   fenAnterior: string | null
   /** Classificação do lance que levou até aqui. */
   classificado: LanceClassificado | null
+  /** Desfecho da partida, exibido só quando a posição selecionada é a última. */
+  desfecho: Desfecho | null
   estadoDoMotor: EstadoDaAnalise
 }
 
-export function PainelDoLance({ analise, fenAnterior, classificado, estadoDoMotor }: Props) {
+export function PainelDoLance({
+  analise,
+  fenAnterior,
+  classificado,
+  desfecho,
+  estadoDoMotor,
+}: Props) {
   if (!analise) {
     return (
       <div className="painel-motor">
@@ -40,6 +50,8 @@ export function PainelDoLance({ analise, fenAnterior, classificado, estadoDoMoto
 
   return (
     <div className="painel-motor">
+      {desfecho && <DesfechoDaPartida desfecho={desfecho} />}
+
       <p className="avaliacao">
         <span className="avaliacao__numero">{formatarAvaliacao(analise.avaliacao)}</span>
         <span className="avaliacao__texto">{descreverAvaliacao(analise.avaliacao)}</span>

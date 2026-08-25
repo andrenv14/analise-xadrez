@@ -44,6 +44,20 @@ export function contarLancesLegais(fen: string): number {
 export type EntregaDeMaterial = {
   /** Quanto material a cor entregou, em centipeões. Negativo = ganhou. */
   entregue: number
+  /**
+   * A melhor resposta do adversário captura **na casa de destino do lance
+   * jogado**?
+   *
+   * É a assinatura do sacrifício de verdade, nas suas duas formas: peça que
+   * vai para casa atacada (`Qb8+` e o adversário responde `Nxb8`) e captura
+   * com peça mais valiosa (`Rxd7` tomando um cavalo com a torre, e o
+   * adversário recaptura em d7).
+   *
+   * Sem esta condição, qualquer lance jogado com uma peça pendurada em outro
+   * canto do tabuleiro é lido como entrega deliberada — o material ia cair de
+   * qualquer forma, o lance não teve nada a ver com isso.
+   */
+  respostaCapturaNoDestino: boolean
 }
 
 /**
@@ -58,6 +72,11 @@ export type EntregaDeMaterial = {
  * materializa três ou quatro lances adiante não é detectado. Aumentar a
  * janela exigiria confiar na variante inteira do motor, que em buscas curtas
  * é justamente a parte menos confiável.
+ *
+ * Segunda limitação assumida: sacrifício de deflexão em que a peça oferecida
+ * **não é a que se moveu** também não é detectado, porque `respostaCapturaNoDestino`
+ * é falso nele. É deliberado — pela informação disponível esse caso é
+ * indistinguível de "havia peça pendurada e o lance não teve nada a ver".
  */
 export function materialEntregue(
   fenAntes: string,
@@ -70,5 +89,9 @@ export function materialEntregue(
 
   const fenFinal = melhorRespostaUci ? (aplicarLanceUci(fenDepois, melhorRespostaUci) ?? fenDepois) : fenDepois
 
-  return { entregue: saldoDeMaterial(fenAntes, cor) - saldoDeMaterial(fenFinal, cor) }
+  return {
+    entregue: saldoDeMaterial(fenAntes, cor) - saldoDeMaterial(fenFinal, cor),
+    respostaCapturaNoDestino:
+      melhorRespostaUci !== null && melhorRespostaUci.slice(2, 4) === lanceUci.slice(2, 4),
+  }
 }

@@ -90,6 +90,36 @@ condição, "Brilhante" dispara em lance trivial.
 pedagogicamente errado. Teoria não é achado do jogador. "Erro" continua valendo
 normalmente lá dentro.
 
+#### O lance precisa ter oferecido o material ele mesmo
+
+Não basta que o material caia depois do lance: a melhor resposta do adversário
+precisa capturar **na casa de destino do lance jogado**. É a assinatura das
+duas formas do sacrifício — peça que vai para casa atacada (`Qb8+`, e vem
+`Nxb8`) e captura com peça mais valiosa (`Rxd7` tomando um cavalo com a torre,
+e vem a recaptura em d7).
+
+Sem essa condição o rótulo mais raro do sistema vira o mais fácil de ganhar em
+partida amadora. Medido numa partida com peça pendurada durante vários lances:
+três lances viraram "Brilhante", entre eles `18... Kc7`, anunciado como
+"sacrifício de 3,30 peões". A torre em a8 ia cair de qualquer forma; o lance de
+rei não teve nada a ver com isso.
+
+#### Limitações assumidas do detector de sacrifício
+
+1. **Janela de dois meios-lances.** Sacrifício que só se materializa três ou
+   quatro lances adiante não é detectado. Ampliar exigiria confiar na variante
+   inteira do motor, que em busca de profundidade 16 é a parte menos confiável.
+2. **Sacrifício que o adversário faz bem em recusar não é detectado.** Em
+   `10. Nxb5` da partida de exemplo, a melhor resposta do motor é `Qb4+`, não
+   `cxb5` — contra a melhor defesa não há entrega. O sacrifício só se
+   materializou porque as pretas aceitaram.
+3. **Sacrifício de deflexão em que a peça oferecida não é a que se moveu não é
+   detectado.** É a contrapartida deliberada da regra acima: pela informação
+   disponível — casa de destino do lance e casa de destino da resposta — esse
+   caso é **indistinguível** de "havia peça pendurada e o lance não teve nada a
+   ver com ela". Escolhemos perder o sacrifício raro em vez de distribuir o
+   rótulo em lance de rei.
+
 ### Excelente exige MultiPV
 
 Para saber se um lance era o _único_ bom, o motor precisa devolver as duas ou

@@ -138,6 +138,18 @@ export function classificarLance(
     }
   }
 
+  // --- Dar mate é sempre "Melhor" ----------------------------------------
+  // Não existe lance melhor que ganhar a partida. Sem este recorte, `a8=Q#`
+  // caía em "Bom" porque o motor preferia `a8=R#` — outro mate igualmente
+  // forçado. O lance jogado não pode ser punido por não ser o mate que o
+  // motor escolheu.
+  //
+  // Fica depois do Brilhante e antes de tudo o mais: mate por sacrifício
+  // continua sendo Brilhante, mas nada abaixo disso rebaixa um mate.
+  const deuMate =
+    depois.avaliacao.tipo === 'fimDeJogo' &&
+    depois.avaliacao.resultado === (cor === 'w' ? 'brancasVencem' : 'pretasVencem')
+
   if (foiOMelhor && principal) {
     // --- "Brilhante": o principal do motor E sacrifício de material -------
     const entrega = materialEntregue(antes.fen, lanceJogadoUci, depois.linhas[0]?.lance ?? null, cor)
@@ -148,6 +160,10 @@ export function classificarLance(
     const aindaJogavel = valorDepois >= -P.LIMIAR_DE_POSICAO_JOGAVEL_CP
     const sacrificou =
       entrega !== null &&
+      // O lance precisa ter oferecido o material ele mesmo. Sem isto, um lance
+      // de rei jogado com uma torre pendurada no outro canto do tabuleiro vira
+      // "sacrifício de 4 peões" — o material ia cair de qualquer jeito.
+      entrega.respostaCapturaNoDestino &&
       entrega.entregue >= P.LIMIAR_DE_SACRIFICIO_CP &&
       perdaCp <= P.MARGEM_DE_SACRIFICIO_CP &&
       aindaJogavel
@@ -172,9 +188,6 @@ export function classificarLance(
     //   distância para a segunda linha fica enorme por natureza: `15... Nxd7`
     //   escolhia entre perder devagar e levar mate na hora, e isso virava
     //   "o único lance que segurava a posição".
-    const deuMate =
-      depois.avaliacao.tipo === 'fimDeJogo' &&
-      depois.avaliacao.resultado === (cor === 'w' ? 'brancasVencem' : 'pretasVencem')
     const aindaDefensavel = valorDepois >= -P.LIMIAR_DE_POSICAO_DEFENSAVEL_CP
 
     const segunda = deuMate || !aindaDefensavel ? null : (antes.linhas[1] ?? null)
@@ -197,6 +210,16 @@ export function classificarLance(
     return {
       classificacao: 'melhor',
       motivo: 'É o lance principal do motor.',
+      perdaCp,
+      alternativa: null,
+    }
+  }
+
+  // Mate que o motor não escolheu: ainda assim é mate.
+  if (deuMate) {
+    return {
+      classificacao: 'melhor',
+      motivo: 'Dá xeque-mate e encerra a partida.',
       perdaCp,
       alternativa: null,
     }

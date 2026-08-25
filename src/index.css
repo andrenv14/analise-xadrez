@@ -530,3 +530,63 @@ button.primario {
   color: var(--texto-fraco);
   line-height: 1.45;
 }
+
+/* --- Desfecho da partida ------------------------------------------------ */
+
+.desfecho {
+  margin: 0 0 0.7rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--borda);
+  background: rgba(111, 158, 106, 0.1);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.desfecho strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.desfecho--incompleta {
+  background: transparent;
+  color: var(--texto-fraco);
+}
+
+/* --- Seletor de partida (PGN com várias) -------------------------------- */
+
+.seletor-de-partida {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: var(--painel);
+}
+
+.seletor-de-partida label {
+  font-size: 0.78rem;
+  color: var(--texto-fraco);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.seletor-de-partida select {
+  flex: 1;
+  min-width: 12rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--borda);
+  background: var(--fundo);
+  color: var(--texto);
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+
+.seletor-de-partida select:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}

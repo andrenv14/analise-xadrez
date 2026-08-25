@@ -4,7 +4,7 @@ import { EvalBar } from './components/EvalBar'
 import { MoveList } from './components/MoveList'
 import { PainelDoLance } from './components/PainelDoLance'
 import { ProgressoDoMotor } from './components/ProgressoDoMotor'
-import { fenNoIndice, parsePgn, PgnError } from './chess/pgn'
+import { fenNoIndice, parsePartidas, PgnError, rotularPartida } from './chess/pgn'
 import type { ParsedGame } from './chess/pgn'
 import { ResumoDaPartida } from './components/ResumoDaPartida'
 import { classificarPartida } from './analise/classificarPartida'
@@ -15,19 +15,22 @@ import { useAnaliseDaPartida } from './hooks/useAnaliseDaPartida'
 
 export default function App() {
   const [pgn, setPgn] = useState('')
-  const [jogo, setJogo] = useState<ParsedGame | null>(null)
+  const [partidas, setPartidas] = useState<ParsedGame[]>([])
+  const [indiceDaPartida, setIndiceDaPartida] = useState(0)
   const [erro, setErro] = useState<{ mensagem: string; detalhe?: string } | null>(null)
   const [indice, setIndice] = useState(0)
   const [orientacao, setOrientacao] = useState<'white' | 'black'>('white')
 
   const analisar = useCallback(() => {
     try {
-      const analisado = parsePgn(pgn)
-      setJogo(analisado)
+      const analisadas = parsePartidas(pgn)
+      setPartidas(analisadas)
+      setIndiceDaPartida(0)
       setIndice(0)
       setErro(null)
     } catch (e) {
-      setJogo(null)
+      setPartidas([])
+      setIndiceDaPartida(0)
       setIndice(0)
       setErro(
         e instanceof PgnError
@@ -36,6 +39,13 @@ export default function App() {
       )
     }
   }, [pgn])
+
+  const jogo = partidas[indiceDaPartida] ?? null
+
+  const trocarDePartida = useCallback((novoIndice: number) => {
+    setIndiceDaPartida(novoIndice)
+    setIndice(0)
+  }, [])
 
   const irPara = useCallback(
     (destino: number) => {
@@ -142,6 +152,25 @@ export default function App() {
         )}
       </section>
 
+      {partidas.length > 1 && (
+        <div className="seletor-de-partida">
+          <label htmlFor="partida">
+            {partidas.length} partidas neste PGN
+          </label>
+          <select
+            id="partida"
+            value={indiceDaPartida}
+            onChange={(e) => trocarDePartida(Number(e.target.value))}
+          >
+            {partidas.map((p, i) => (
+              <option key={i} value={i}>
+                {rotularPartida(p, i)}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       {jogo && fen && <ProgressoDoMotor progresso={progresso} />}
 
       {jogo && fen && (
@@ -218,6 +247,7 @@ export default function App() {
               analise={analiseAtual}
               fenAnterior={fenAnterior}
               classificado={classificadoAtual}
+              desfecho={indice === jogo.plies.length ? jogo.desfecho : null}
               estadoDoMotor={progresso.estado}
             />
 
