@@ -151,7 +151,7 @@ a profundidade de algumas posições tornaria as avaliações incomparáveis ao
 longo da partida: a perda de centipeões calculada atravessando a fronteira
 entre uma posição funda e uma rasa mede a diferença entre as duas buscas, não o
 lance. Medindo, isso não é teórico — escalar para profundidade 20 mudava a
-classificação de `14... Qe6` de imprecisão para capivara sem que nada tivesse
+classificação de `14... Qe6` de imprecisão para mancada sem que nada tivesse
 mudado naquele lance, só porque a vizinha ficou mais funda.
 
 Pela mesma razão, **a checagem só compara pares analisados no mesmo ajuste**.
@@ -168,7 +168,7 @@ construção, não por convenção.
 
 ### Aviso necessário
 
-Os nomes — Brilhante, Excelente, Melhor, Bom, Imprecisão, Erro, Capivara,
+Os nomes — Brilhante, Excelente, Melhor, Bom, Imprecisão, Erro, Mancada,
 Livro, Perdeu — vêm do vocabulário que o chess.com popularizou. **O critério é
 inteiramente meu.**
 
@@ -189,7 +189,7 @@ A ordem de decisão importa tanto quanto os limiares:
 
 1. **Lance forçado** (só existe um lance legal) não é classificado. Sem
    escolha, não há mérito nem culpa.
-2. **Perdeu** tem precedência sobre Erro e Capivara. Duas fontes: mate forçado
+2. **Perdeu** tem precedência sobre Erro e Mancada. Duas fontes: mate forçado
    que existia e sumiu (inequívoco, sem limiar), e ganho de material claro
    desperdiçado. A segunda exige *dois* parâmetros, não um: `GANHO_CLARO`
    (200cp) define o que conta como vantagem clara, e `DESPERDICIO` (150cp)
@@ -200,12 +200,12 @@ A ordem de decisão importa tanto quanto os limiares:
    pequena *e* a partida não acaba ali.
 4. **Brilhante**, **Excelente**, **Melhor**, se o lance foi o principal do
    motor.
-5. **Bom / Imprecisão / Erro / Capivara** pela perda.
+5. **Bom / Imprecisão / Erro / Mancada** pela perda.
 
 Um lance que foi o principal do motor nunca alcança a escala de perda. Isso
 parece óbvio e não era: numa versão intermediária a checagem de perda rodava
 antes, e o próprio lance recomendado pelo motor chegou a ser chamado de
-"capivara".
+"mancada".
 
 ### Brilhante exige sacrifício de verdade
 
@@ -257,7 +257,7 @@ ramo do Livro retorna antes do ramo do Brilhante.
 
 **"Erro" continua valendo normalmente lá dentro.** A base de aberturas nomeia
 até a linha do mate do bobo; `2. g4` está numa posição com nome e nem por isso
-deixa de ser capivara. Por isso "Livro" só se aplica quando a perda está abaixo
+deixa de ser mancada. Por isso "Livro" só se aplica quando a perda está abaixo
 do limiar de imprecisão.
 
 ### Livro: a base de aberturas
@@ -373,7 +373,7 @@ avaliações. A suíte inteira leva menos de meio segundo e não pisca.
 Os casos cobertos são os que já estiveram errados em alguma versão, não
 exemplos triviais: os dois sacrifícios da Ópera de Morphy, o lance forçado que
 não deve ser julgado, o mate que não pode ser rebaixado, o `2. g4` que está na
-base de aberturas e mesmo assim é capivara, o buraco da base no meio da
+base de aberturas e mesmo assim é mancada, o buraco da base no meio da
 Najdorf, os três falsos Brilhantes da partida caótica, os dois pisos de posição
 decidida, a contagem de material em roque, en passant e promoção, e a
 contradição do motor em torno de `15.Bxd7+` — incluindo `15... Nxd7` não voltar

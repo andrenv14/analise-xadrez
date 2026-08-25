@@ -379,7 +379,7 @@ button.primario {
 .marcador--bom       { color: #6b7480; }
 .marcador--imprecisao { color: #e0b95f; }
 .marcador--erro      { color: #e08a4a; }
-.marcador--capivara  { color: #e0645f; }
+.marcador--mancada   { color: #e0645f; }
 .marcador--perdeu    { color: #c264c8; }
 
 .move--selecionado .marcador {
@@ -412,7 +412,7 @@ button.primario {
 .classificacao__titulo--bom       { color: var(--texto-fraco); }
 .classificacao__titulo--imprecisao { color: #e0b95f; }
 .classificacao__titulo--erro      { color: #e08a4a; }
-.classificacao__titulo--capivara  { color: #e0645f; }
+.classificacao__titulo--mancada   { color: #e0645f; }
 .classificacao__titulo--perdeu    { color: #c264c8; }
 .classificacao__titulo--neutro    { color: var(--texto-fraco); }
 

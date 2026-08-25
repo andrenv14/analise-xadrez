@@ -15,6 +15,6 @@ export const ROTULOS: Record<Classificacao, { nome: string; simbolo: string }> =
   bom: { nome: 'Bom', simbolo: '·' },
   imprecisao: { nome: 'Imprecisão', simbolo: '?!' },
   erro: { nome: 'Erro', simbolo: '?' },
-  capivara: { nome: 'Capivara', simbolo: '??' },
+  mancada: { nome: 'Mancada', simbolo: '??' },
   perdeu: { nome: 'Perdeu', simbolo: '✕' },
 }

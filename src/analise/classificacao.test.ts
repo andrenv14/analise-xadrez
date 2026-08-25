@@ -80,7 +80,7 @@ describe('Mate do bobo — teoria não perdoa lance ruim', () => {
     expect(jogo.plies[0].san).toBe('f3')
     expect(rotulo(1)).toBe('imprecisao')
     expect(jogo.plies[2].san).toBe('g4')
-    expect(rotulo(3)).toBe('capivara')
+    expect(rotulo(3)).toBe('mancada')
   })
 
   it('classifica como Livro o lance de teoria que não perde nada', () => {

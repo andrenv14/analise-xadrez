@@ -145,7 +145,7 @@ avaliação depois, do ponto de vista de quem jogou). Faixas iniciais a calibrar
 | Bom           | perda pequena                                                                                         |
 | Imprecisão    | perda moderada                                                                                        |
 | Erro          | perda grande                                                                                          |
-| Capivara      | perda decisiva                                                                                        |
+| Mancada      | perda decisiva                                                                                        |
 | Livro         | posição ainda dentro de teoria de abertura conhecida                                                  |
 | Perdeu        | havia mate forçado ou ganho de material claro disponível, e o lance jogado desperdiçou                |
 | Brilhante     | **sacrifício de material** que o motor confirma como bom, e fora de teoria                            |
@@ -207,7 +207,7 @@ não existe.
    escolhido faz "Perdeu" disparar em tudo e virar ruído.
 
 **Precedência**: quando um lance se qualifica como "Perdeu" e também como
-"Erro"/"Capivara" (o que é comum — desperdiçar mate também derruba a
+"Erro"/"Mancada" (o que é comum — desperdiçar mate também derruba a
 avaliação), **"Perdeu" vence**.
 
 ### Casos que quebram a conta de centipawn
@@ -243,7 +243,7 @@ que segue em teoria até o lance 8.
 Dois recortes no rótulo, cada um corrigindo um caso observado:
 
 - **Perda pequena.** `2. g4` do mate do bobo está numa posição nomeada (Barnes
-  Opening: Fool's Mate) e nem por isso deixa de ser capivara. É o "Erro
+  Opening: Fool's Mate) e nem por isso deixa de ser mancada. É o "Erro
   continua valendo lá dentro" acima.
 - **A partida não acaba ali.** A base nomeia até a posição de mate; chamar
   `2... Qh4#` de "lance de livro" é absurdo.
@@ -296,7 +296,7 @@ profundidade fixa, o mesmo custo aparece no relógio.
 
 Mantido mesmo assim: sem MultiPV, "Excelente" não existe, e a diferença medida
 é de **16 rótulos em 33**. MultiPV 1 também perde `13.Rxd7` (de "Brilhante"
-para "Melhor") e transforma `15...Nxd7` de "Excelente" em "Capivara".
+para "Melhor") e transforma `15...Nxd7` de "Excelente" em "Mancada".
 
 ## README do repo (é parte da entrega)
 

@@ -89,7 +89,7 @@ describe('a reanálise corrige o que a contradição estragava', () => {
     expect(jogo.plies[29].san).toBe('Nxd7')
     expect(antes[29]?.classificacao).toBe('melhor')
     expect(depois[29]?.classificacao).not.toBe('melhor')
-    expect(depois[29]?.classificacao).toBe('capivara')
+    expect(depois[29]?.classificacao).toBe('mancada')
   })
 
   it('o motor passa a apontar Qxd7 como melhor defesa', () => {
@@ -100,7 +100,7 @@ describe('a reanálise corrige o que a contradição estragava', () => {
   it('15.Bxd7+ segue sendo Melhor — ele é o lance principal do motor', () => {
     // A queda de +6.65 para +2.75 era erro do motor, não do jogador. Sem a
     // precedência do lance principal, os 390cp de "perda" fariam o app
-    // chamar de capivara a jogada da combinação mais famosa do xadrez.
+    // chamar de mancada a jogada da combinação mais famosa do xadrez.
     expect(antes[28]?.classificacao).toBe('melhor')
     expect(depois[28]?.classificacao).toBe('melhor')
   })

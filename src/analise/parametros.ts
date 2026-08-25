@@ -20,8 +20,8 @@ export const PARAMETROS_DE_CLASSIFICACAO = {
   LIMIAR_IMPRECISAO_CP: 50,
   /** Perda a partir da qual vira "Erro". */
   LIMIAR_ERRO_CP: 120,
-  /** Perda a partir da qual vira "Capivara". */
-  LIMIAR_CAPIVARA_CP: 300,
+  /** Perda a partir da qual vira "Mancada". */
+  LIMIAR_MANCADA_CP: 300,
 
   /**
    * "Excelente": o quanto a segunda linha do motor precisa ser pior para que

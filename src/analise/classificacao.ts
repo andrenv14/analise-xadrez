@@ -14,7 +14,7 @@ export type Classificacao =
   | 'bom'
   | 'imprecisao'
   | 'erro'
-  | 'capivara'
+  | 'mancada'
   | 'perdeu'
   | 'livro'
 
@@ -46,8 +46,8 @@ function emPeoes(centipeoes: number): string {
 }
 
 function classificarPelaPerda(perdaCp: number): { classificacao: Classificacao; motivo: string } {
-  if (perdaCp >= P.LIMIAR_CAPIVARA_CP) {
-    return { classificacao: 'capivara', motivo: `Perda decisiva de ${emPeoes(perdaCp)} peões.` }
+  if (perdaCp >= P.LIMIAR_MANCADA_CP) {
+    return { classificacao: 'mancada', motivo: `Perda decisiva de ${emPeoes(perdaCp)} peões.` }
   }
   if (perdaCp >= P.LIMIAR_ERRO_CP) {
     return { classificacao: 'erro', motivo: `Perda grande de ${emPeoes(perdaCp)} peões.` }
@@ -91,7 +91,7 @@ export function classificarLance(
   const alternativa =
     !foiOMelhor && principal ? { lanceUci: principal.lance, avaliacao: principal.avaliacao } : null
 
-  // --- "Perdeu" tem precedência sobre "Erro"/"Capivara" -------------------
+  // --- "Perdeu" tem precedência sobre "Erro"/"Mancada" -------------------
   // Só se aplica a lance que não era o principal: quando o motor escolheu o
   // mesmo lance, um mate que "sumiu" é oscilação entre duas buscas de
   // profundidades diferentes, não desperdício do jogador.
@@ -126,7 +126,7 @@ export function classificarLance(
   //
   // - Perda pequena. A spec é explícita que "Erro continua valendo normalmente
   //   lá dentro": `2. g4` no mate do bobo está numa posição nomeada (Barnes
-  //   Opening: Fool's Mate) e nem por isso deixa de ser capivara.
+  //   Opening: Fool's Mate) e nem por isso deixa de ser mancada.
   // - A partida não acaba aqui. A base nomeia até a posição de mate do mate do
   //   bobo, e chamar `2... Qh4#` de "lance de livro" é absurdo.
   //

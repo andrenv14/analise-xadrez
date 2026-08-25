@@ -27,7 +27,7 @@ export const ORDEM_DAS_CLASSIFICACOES: Classificacao[] = [
   'bom',
   'imprecisao',
   'erro',
-  'capivara',
+  'mancada',
   'perdeu',
   'livro',
 ]
