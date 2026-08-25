@@ -1,0 +1,2971 @@
+{
+ "profundidade": 16,
+ "linhas": 3,
+ "motor": "stockfish-18-lite-single",
+ "partidas": {
+  "morphy": {
+   "pgn": "[Event \"Partida de exemplo\"]\n[White \"Morphy\"]\n[Black \"Duque de Brunswick e Conde Isouard\"]\n[Result \"1-0\"]\n\n1. e4 e5 2. Nf3 d6 3. d4 Bg4 4. dxe5 Bxf3 5. Qxf3 dxe5 6. Bc4 Nf6 7. Qb3 Qe7\n8. Nc3 c6 9. Bg5 b5 10. Nxb5 cxb5 11. Bxb5+ Nbd7 12. O-O-O Rd8 13. Rxd7 Rxd7\n14. Rd1 Qe6 15. Bxd7+ Nxd7 16. Qb8+ Nxb8 17. Rd8# 1-0",
+   "analises": [
+    {
+     "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+     "linhas": [
+      {
+       "lance": "e2e4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 42
+       },
+       "variante": [
+        "e2e4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g1f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 19
+       },
+       "variante": [
+        "g1f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e2e3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 17
+       },
+       "variante": [
+        "e2e3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 42
+     },
+     "melhorLance": "e2e4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+     "linhas": [
+      {
+       "lance": "e7e5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 30
+       },
+       "variante": [
+        "e7e5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 36
+       },
+       "variante": [
+        "e7e6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d7d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 52
+       },
+       "variante": [
+        "d7d5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 30
+     },
+     "melhorLance": "e7e5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+     "linhas": [
+      {
+       "lance": "g1f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "g1f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 17
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f1c4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 2
+       },
+       "variante": [
+        "f1c4"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 43
+     },
+     "melhorLance": "g1f3",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
+     "linhas": [
+      {
+       "lance": "g8f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 44
+       },
+       "variante": [
+        "g8f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8c6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 44
+       },
+       "variante": [
+        "b8c6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d7d6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 49
+       },
+       "variante": [
+        "d7d6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 44
+     },
+     "melhorLance": "g8f6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/ppp2ppp/3p4/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3",
+     "linhas": [
+      {
+       "lance": "f1c4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 45
+       },
+       "variante": [
+        "f1c4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d2d4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "d2d4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 30
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 45
+     },
+     "melhorLance": "f1c4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/ppp2ppp/3p4/4p3/3PP3/5N2/PPP2PPP/RNBQKB1R b KQkq - 0 3",
+     "linhas": [
+      {
+       "lance": "g8f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 53
+       },
+       "variante": [
+        "g8f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 62
+       },
+       "variante": [
+        "b8d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e5d4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 66
+       },
+       "variante": [
+        "e5d4"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 53
+     },
+     "melhorLance": "g8f6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkbnr/ppp2ppp/3p4/4p3/3PP1b1/5N2/PPP2PPP/RNBQKB1R w KQkq - 1 4",
+     "linhas": [
+      {
+       "lance": "d4e5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 101
+       },
+       "variante": [
+        "d4e5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 84
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c1e3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 84
+       },
+       "variante": [
+        "c1e3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 101
+     },
+     "melhorLance": "d4e5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkbnr/ppp2ppp/3p4/4P3/4P1b1/5N2/PPP2PPP/RNBQKB1R b KQkq - 0 4",
+     "linhas": [
+      {
+       "lance": "b8c6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 73
+       },
+       "variante": [
+        "b8c6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 97
+       },
+       "variante": [
+        "b8d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a7a6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 127
+       },
+       "variante": [
+        "a7a6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 73
+     },
+     "melhorLance": "b8c6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkbnr/ppp2ppp/3p4/4P3/4P3/5b2/PPP2PPP/RNBQKB1R w KQkq - 0 5",
+     "linhas": [
+      {
+       "lance": "d1f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 117
+       },
+       "variante": [
+        "d1f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g2f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 74
+       },
+       "variante": [
+        "g2f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d1d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -116
+       },
+       "variante": [
+        "d1d5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 117
+     },
+     "melhorLance": "d1f3",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkbnr/ppp2ppp/3p4/4P3/4P3/5Q2/PPP2PPP/RNB1KB1R b KQkq - 0 5",
+     "linhas": [
+      {
+       "lance": "d6e5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 112
+       },
+       "variante": [
+        "d6e5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 141
+       },
+       "variante": [
+        "b8d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8c6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 169
+       },
+       "variante": [
+        "b8c6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 112
+     },
+     "melhorLance": "d6e5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkbnr/ppp2ppp/8/4p3/4P3/5Q2/PPP2PPP/RNB1KB1R w KQkq - 0 6",
+     "linhas": [
+      {
+       "lance": "f1c4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 117
+       },
+       "variante": [
+        "f1c4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f3b3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 116
+       },
+       "variante": [
+        "f3b3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 94
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 117
+     },
+     "melhorLance": "f1c4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkbnr/ppp2ppp/8/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R b KQkq - 1 6",
+     "linhas": [
+      {
+       "lance": "d8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 118
+       },
+       "variante": [
+        "d8d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d8f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 120
+       },
+       "variante": [
+        "d8f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d8e7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 148
+       },
+       "variante": [
+        "d8e7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 118
+     },
+     "melhorLance": "d8d7",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkb1r/ppp2ppp/5n2/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R w KQkq - 2 7",
+     "linhas": [
+      {
+       "lance": "f3b3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 215
+       },
+       "variante": [
+        "f3b3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1d2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 99
+       },
+       "variante": [
+        "b1d2"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e1g1",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 86
+       },
+       "variante": [
+        "e1g1"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 215
+     },
+     "melhorLance": "f3b3",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkb1r/ppp2ppp/5n2/4p3/2B1P3/1Q6/PPP2PPP/RNB1K2R b KQkq - 3 7",
+     "linhas": [
+      {
+       "lance": "f8c5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 206
+       },
+       "variante": [
+        "f8c5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d8e7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 235
+       },
+       "variante": [
+        "d8e7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 264
+       },
+       "variante": [
+        "d8d7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 206
+     },
+     "melhorLance": "f8c5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/ppp1qppp/5n2/4p3/2B1P3/1Q6/PPP2PPP/RNB1K2R w KQkq - 4 8",
+     "linhas": [
+      {
+       "lance": "b3b7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 231
+       },
+       "variante": [
+        "b3b7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 187
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e1g1",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 135
+       },
+       "variante": [
+        "e1g1"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 231
+     },
+     "melhorLance": "b3b7",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/ppp1qppp/5n2/4p3/2B1P3/1QN5/PPP2PPP/R1B1K2R b KQkq - 5 8",
+     "linhas": [
+      {
+       "lance": "c7c6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 170
+       },
+       "variante": [
+        "c7c6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b7b5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 248
+       },
+       "variante": [
+        "b7b5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b7b6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 250
+       },
+       "variante": [
+        "b7b6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 170
+     },
+     "melhorLance": "c7c6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/pp2qppp/2p2n2/4p3/2B1P3/1QN5/PPP2PPP/R1B1K2R w KQkq - 0 9",
+     "linhas": [
+      {
+       "lance": "c1g5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 160
+       },
+       "variante": [
+        "c1g5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c1e3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 147
+       },
+       "variante": [
+        "c1e3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f2f4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 140
+       },
+       "variante": [
+        "f2f4"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 160
+     },
+     "melhorLance": "c1g5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/pp2qppp/2p2n2/4p1B1/2B1P3/1QN5/PPP2PPP/R3K2R b KQkq - 1 9",
+     "linhas": [
+      {
+       "lance": "e7c7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 166
+       },
+       "variante": [
+        "e7c7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8a6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 194
+       },
+       "variante": [
+        "b8a6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a7a6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 214
+       },
+       "variante": [
+        "a7a6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 166
+     },
+     "melhorLance": "e7c7",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/p3qppp/2p2n2/1p2p1B1/2B1P3/1QN5/PPP2PPP/R3K2R w KQkq - 0 10",
+     "linhas": [
+      {
+       "lance": "c3b5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 288
+       },
+       "variante": [
+        "c3b5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g5f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 127
+       },
+       "variante": [
+        "g5f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c4e2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 41
+       },
+       "variante": [
+        "c4e2"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 288
+     },
+     "melhorLance": "c3b5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/p3qppp/2p2n2/1N2p1B1/2B1P3/1Q6/PPP2PPP/R3K2R b KQkq - 0 10",
+     "linhas": [
+      {
+       "lance": "e7b4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 298
+       },
+       "variante": [
+        "e7b4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8a6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 322
+       },
+       "variante": [
+        "b8a6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e8d8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 436
+       },
+       "variante": [
+        "e8d8"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 298
+     },
+     "melhorLance": "e7b4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/p3qppp/5n2/1p2p1B1/2B1P3/1Q6/PPP2PPP/R3K2R w KQkq - 0 11",
+     "linhas": [
+      {
+       "lance": "c4b5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 440
+       },
+       "variante": [
+        "c4b5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3b5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 140
+       },
+       "variante": [
+        "b3b5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c4e2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -93
+       },
+       "variante": [
+        "c4e2"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 440
+     },
+     "melhorLance": "c4b5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn2kb1r/p3qppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/R3K2R b KQkq - 0 11",
+     "linhas": [
+      {
+       "lance": "b8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 486
+       },
+       "variante": [
+        "b8d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e8d8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 520
+       },
+       "variante": [
+        "e8d8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 522
+       },
+       "variante": [
+        "e7d7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 486
+     },
+     "melhorLance": "b8d7",
+     "profundidade": 16
+    },
+    {
+     "fen": "r3kb1r/p2nqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/R3K2R w KQkq - 1 12",
+     "linhas": [
+      {
+       "lance": "e1c1",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 382
+       },
+       "variante": [
+        "e1c1"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g5f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 198
+       },
+       "variante": [
+        "g5f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e1g1",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 109
+       },
+       "variante": [
+        "e1g1"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 382
+     },
+     "melhorLance": "e1c1",
+     "profundidade": 16
+    },
+    {
+     "fen": "r3kb1r/p2nqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR3R b kq - 2 12",
+     "linhas": [
+      {
+       "lance": "e7c5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 465
+       },
+       "variante": [
+        "e7c5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a8b8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 485
+       },
+       "variante": [
+        "a8b8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a8d8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 533
+       },
+       "variante": [
+        "a8d8"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 465
+     },
+     "melhorLance": "e7c5",
+     "profundidade": 16
+    },
+    {
+     "fen": "3rkb1r/p2nqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR3R w k - 3 13",
+     "linhas": [
+      {
+       "lance": "d1d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 450
+       },
+       "variante": [
+        "d1d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d1d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 339
+       },
+       "variante": [
+        "d1d5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d1d3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 295
+       },
+       "variante": [
+        "d1d3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 450
+     },
+     "melhorLance": "d1d7",
+     "profundidade": 16
+    },
+    {
+     "fen": "3rkb1r/p2Rqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2K4R b k - 0 13",
+     "linhas": [
+      {
+       "lance": "f6d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 540
+       },
+       "variante": [
+        "f6d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 567
+       },
+       "variante": [
+        "e7d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 615
+       },
+       "variante": [
+        "d8d7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 540
+     },
+     "melhorLance": "f6d7",
+     "profundidade": 16
+    },
+    {
+     "fen": "4kb1r/p2rqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2K4R w k - 0 14",
+     "linhas": [
+      {
+       "lance": "h1d1",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 554
+       },
+       "variante": [
+        "h1d1"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g5f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 218
+       },
+       "variante": [
+        "g5f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 161
+       },
+       "variante": [
+        "b3c3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 554
+     },
+     "melhorLance": "h1d1",
+     "profundidade": 16
+    },
+    {
+     "fen": "4kb1r/p2rqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR4 b k - 1 14",
+     "linhas": [
+      {
+       "lance": "e7d6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 571
+       },
+       "variante": [
+        "e7d6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g7g6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 603
+       },
+       "variante": [
+        "g7g6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e8d8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 606
+       },
+       "variante": [
+        "e8d8"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 571
+     },
+     "melhorLance": "e7d6",
+     "profundidade": 16
+    },
+    {
+     "fen": "4kb1r/p2r1ppp/4qn2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 2 15",
+     "linhas": [
+      {
+       "lance": "b5d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 665
+       },
+       "variante": [
+        "b5d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g5f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 586
+       },
+       "variante": [
+        "g5f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 401
+       },
+       "variante": [
+        "b3e6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 665
+     },
+     "melhorLance": "b5d7",
+     "profundidade": 16
+    },
+    {
+     "fen": "4kb1r/p2B1ppp/4qn2/4p1B1/4P3/1Q6/PPP2PPP/2KR4 b k - 0 15",
+     "linhas": [
+      {
+       "lance": "f6d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 275
+       },
+       "variante": [
+        "f6d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e6d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 617
+       },
+       "variante": [
+        "e6d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e8e7",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 4
+       },
+       "variante": [
+        "e8e7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 275
+     },
+     "melhorLance": "f6d7",
+     "profundidade": 16
+    },
+    {
+     "fen": "4kb1r/p2n1ppp/4q3/4p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 0 16",
+     "linhas": [
+      {
+       "lance": "b3b8",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 2
+       },
+       "variante": [
+        "b3b8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 263
+       },
+       "variante": [
+        "b3c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3b7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 255
+       },
+       "variante": [
+        "b3b7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "mateEm",
+      "lances": 2
+     },
+     "melhorLance": "b3b8",
+     "profundidade": 16
+    },
+    {
+     "fen": "1Q2kb1r/p2n1ppp/4q3/4p1B1/4P3/8/PPP2PPP/2KR4 b k - 1 16",
+     "linhas": [
+      {
+       "lance": "d7b8",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 1
+       },
+       "variante": [
+        "d7b8"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "mateEm",
+      "lances": 1
+     },
+     "melhorLance": "d7b8",
+     "profundidade": 16
+    },
+    {
+     "fen": "1n2kb1r/p4ppp/4q3/4p1B1/4P3/8/PPP2PPP/2KR4 w k - 0 17",
+     "linhas": [
+      {
+       "lance": "d1d8",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 1
+       },
+       "variante": [
+        "d1d8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c1b1",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -470
+       },
+       "variante": [
+        "c1b1"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b2b3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -481
+       },
+       "variante": [
+        "b2b3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "mateEm",
+      "lances": 1
+     },
+     "melhorLance": "d1d8",
+     "profundidade": 16
+    },
+    {
+     "fen": "1n1Rkb1r/p4ppp/4q3/4p1B1/4P3/8/PPP2PPP/2K5 b k - 1 17",
+     "linhas": [
+      {
+       "lance": "",
+       "avaliacao": {
+        "tipo": "fimDeJogo",
+        "resultado": "brancasVencem"
+       },
+       "variante": [],
+       "profundidade": 0
+      }
+     ],
+     "avaliacao": {
+      "tipo": "fimDeJogo",
+      "resultado": "brancasVencem"
+     },
+     "melhorLance": "",
+     "profundidade": 0
+    }
+   ]
+  },
+  "bobo": {
+   "pgn": "1. f3 e5 2. g4 Qh4# 0-1",
+   "analises": [
+    {
+     "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+     "linhas": [
+      {
+       "lance": "e2e4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 42
+       },
+       "variante": [
+        "e2e4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g1f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 19
+       },
+       "variante": [
+        "g1f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e2e3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 17
+       },
+       "variante": [
+        "e2e3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 42
+     },
+     "melhorLance": "e2e4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pppppppp/8/8/8/5P2/PPPPP1PP/RNBQKBNR b KQkq - 0 1",
+     "linhas": [
+      {
+       "lance": "e7e5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -72
+       },
+       "variante": [
+        "e7e5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d7d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -49
+       },
+       "variante": [
+        "d7d5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -39
+       },
+       "variante": [
+        "e7e6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -72
+     },
+     "melhorLance": "e7e5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pppp1ppp/8/4p3/8/5P2/PPPPP1PP/RNBQKBNR w KQkq - 0 2",
+     "linhas": [
+      {
+       "lance": "e2e4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -63
+       },
+       "variante": [
+        "e2e4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -76
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e2e3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -76
+       },
+       "variante": [
+        "e2e3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -63
+     },
+     "melhorLance": "e2e4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pppp1ppp/8/4p3/6P1/5P2/PPPPP2P/RNBQKBNR b KQkq - 0 2",
+     "linhas": [
+      {
+       "lance": "d8h4",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": -1
+       },
+       "variante": [
+        "d8h4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "h7h5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -272
+       },
+       "variante": [
+        "h7h5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d7d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -232
+       },
+       "variante": [
+        "d7d5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "mateEm",
+      "lances": -1
+     },
+     "melhorLance": "d8h4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3",
+     "linhas": [
+      {
+       "lance": "",
+       "avaliacao": {
+        "tipo": "fimDeJogo",
+        "resultado": "pretasVencem"
+       },
+       "variante": [],
+       "profundidade": 0
+      }
+     ],
+     "avaliacao": {
+      "tipo": "fimDeJogo",
+      "resultado": "pretasVencem"
+     },
+     "melhorLance": "",
+     "profundidade": 0
+    }
+   ]
+  },
+  "najdorf": {
+   "pgn": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be3 e5 7. Nb3 Be6 8. f3 Be7 9. Qd2 O-O *",
+   "analises": [
+    {
+     "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+     "linhas": [
+      {
+       "lance": "e2e4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 42
+       },
+       "variante": [
+        "e2e4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g1f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 19
+       },
+       "variante": [
+        "g1f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e2e3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 17
+       },
+       "variante": [
+        "e2e3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 42
+     },
+     "melhorLance": "e2e4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+     "linhas": [
+      {
+       "lance": "e7e5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 30
+       },
+       "variante": [
+        "e7e5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 36
+       },
+       "variante": [
+        "e7e6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d7d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 52
+       },
+       "variante": [
+        "d7d5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 30
+     },
+     "melhorLance": "e7e5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+     "linhas": [
+      {
+       "lance": "g1f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 38
+       },
+       "variante": [
+        "g1f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 35
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g1e2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 32
+       },
+       "variante": [
+        "g1e2"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 38
+     },
+     "melhorLance": "g1f3",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
+     "linhas": [
+      {
+       "lance": "e7e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "e7e6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8c6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 44
+       },
+       "variante": [
+        "b8c6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d7d6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 50
+       },
+       "variante": [
+        "d7d6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 43
+     },
+     "melhorLance": "e7e6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pp2pppp/3p4/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3",
+     "linhas": [
+      {
+       "lance": "d2d4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 42
+       },
+       "variante": [
+        "d2d4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f1c4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 30
+       },
+       "variante": [
+        "f1c4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 19
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 42
+     },
+     "melhorLance": "d2d4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pp2pppp/3p4/2p5/3PP3/5N2/PPP2PPP/RNBQKB1R b KQkq - 0 3",
+     "linhas": [
+      {
+       "lance": "c5d4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 42
+       },
+       "variante": [
+        "c5d4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g8f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "g8f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 93
+       },
+       "variante": [
+        "b8d7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 42
+     },
+     "melhorLance": "c5d4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pp2pppp/3p4/8/3pP3/5N2/PPP2PPP/RNBQKB1R w KQkq - 0 4",
+     "linhas": [
+      {
+       "lance": "f3d4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 54
+       },
+       "variante": [
+        "f3d4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d1d4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 28
+       },
+       "variante": [
+        "d1d4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f1c4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 24
+       },
+       "variante": [
+        "f1c4"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 54
+     },
+     "melhorLance": "f3d4",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkbnr/pp2pppp/3p4/8/3NP3/8/PPP2PPP/RNBQKB1R b KQkq - 0 4",
+     "linhas": [
+      {
+       "lance": "g8f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 46
+       },
+       "variante": [
+        "g8f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8c6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 52
+       },
+       "variante": [
+        "b8c6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 69
+       },
+       "variante": [
+        "e7e6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 46
+     },
+     "melhorLance": "g8f6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkb1r/pp2pppp/3p1n2/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 1 5",
+     "linhas": [
+      {
+       "lance": "b1c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "b1c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f2f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 13
+       },
+       "variante": [
+        "f2f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d1d3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 8
+       },
+       "variante": [
+        "d1d3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 43
+     },
+     "melhorLance": "b1c3",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkb1r/pp2pppp/3p1n2/8/3NP3/2N5/PPP2PPP/R1BQKB1R b KQkq - 2 5",
+     "linhas": [
+      {
+       "lance": "a7a6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 44
+       },
+       "variante": [
+        "a7a6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8c6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 48
+       },
+       "variante": [
+        "b8c6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 64
+       },
+       "variante": [
+        "e7e6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 44
+     },
+     "melhorLance": "a7a6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkb1r/1p2pppp/p2p1n2/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 6",
+     "linhas": [
+      {
+       "lance": "c1e3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 50
+       },
+       "variante": [
+        "c1e3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f2f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 42
+       },
+       "variante": [
+        "f2f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f1e2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 41
+       },
+       "variante": [
+        "f1e2"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 50
+     },
+     "melhorLance": "c1e3",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkb1r/1p2pppp/p2p1n2/8/3NP3/2N1B3/PPP2PPP/R2QKB1R b KQkq - 1 6",
+     "linhas": [
+      {
+       "lance": "e7e5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "e7e5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g7g6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 55
+       },
+       "variante": [
+        "g7g6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e7e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 58
+       },
+       "variante": [
+        "e7e6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 43
+     },
+     "melhorLance": "e7e5",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkb1r/1p3ppp/p2p1n2/4p3/3NP3/2N1B3/PPP2PPP/R2QKB1R w KQkq - 0 7",
+     "linhas": [
+      {
+       "lance": "d4b3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "d4b3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d4f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 34
+       },
+       "variante": [
+        "d4f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d4e2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 27
+       },
+       "variante": [
+        "d4e2"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 43
+     },
+     "melhorLance": "d4b3",
+     "profundidade": 16
+    },
+    {
+     "fen": "rnbqkb1r/1p3ppp/p2p1n2/4p3/4P3/1NN1B3/PPP2PPP/R2QKB1R b KQkq - 1 7",
+     "linhas": [
+      {
+       "lance": "f8e7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "f8e7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c8e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 45
+       },
+       "variante": [
+        "c8e6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d8c7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 57
+       },
+       "variante": [
+        "d8c7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 43
+     },
+     "melhorLance": "f8e7",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkb1r/1p3ppp/p2pbn2/4p3/4P3/1NN1B3/PPP2PPP/R2QKB1R w KQkq - 2 8",
+     "linhas": [
+      {
+       "lance": "d1d2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 46
+       },
+       "variante": [
+        "d1d2"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f2f3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 43
+       },
+       "variante": [
+        "f2f3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c3d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 37
+       },
+       "variante": [
+        "c3d5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 46
+     },
+     "melhorLance": "d1d2",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qkb1r/1p3ppp/p2pbn2/4p3/4P3/1NN1BP2/PPP3PP/R2QKB1R b KQkq - 0 8",
+     "linhas": [
+      {
+       "lance": "b8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 41
+       },
+       "variante": [
+        "b8d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "h7h5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 42
+       },
+       "variante": [
+        "h7h5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f8e7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 44
+       },
+       "variante": [
+        "f8e7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 41
+     },
+     "melhorLance": "b8d7",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qk2r/1p2bppp/p2pbn2/4p3/4P3/1NN1BP2/PPP3PP/R2QKB1R w KQkq - 1 9",
+     "linhas": [
+      {
+       "lance": "d1d2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 44
+       },
+       "variante": [
+        "d1d2"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f1e2",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 34
+       },
+       "variante": [
+        "f1e2"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d1d3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 18
+       },
+       "variante": [
+        "d1d3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 44
+     },
+     "melhorLance": "d1d2",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1qk2r/1p2bppp/p2pbn2/4p3/4P3/1NN1BP2/PPPQ2PP/R3KB1R b KQkq - 2 9",
+     "linhas": [
+      {
+       "lance": "h7h6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 51
+       },
+       "variante": [
+        "h7h6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b8d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 51
+       },
+       "variante": [
+        "b8d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "h7h5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 52
+       },
+       "variante": [
+        "h7h5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 51
+     },
+     "melhorLance": "h7h6",
+     "profundidade": 16
+    },
+    {
+     "fen": "rn1q1rk1/1p2bppp/p2pbn2/4p3/4P3/1NN1BP2/PPPQ2PP/R3KB1R w KQ - 3 10",
+     "linhas": [
+      {
+       "lance": "e1c1",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 53
+       },
+       "variante": [
+        "e1c1"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a2a3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 27
+       },
+       "variante": [
+        "a2a3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a2a4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 21
+       },
+       "variante": [
+        "a2a4"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 53
+     },
+     "melhorLance": "e1c1",
+     "profundidade": 16
+    }
+   ]
+  },
+  "promocaoComMate": {
+   "pgn": "[SetUp \"1\"]\n[FEN \"7k/P6p/8/8/8/8/7P/6RK w - - 0 1\"]\n\n1. a8=Q# 1-0",
+   "analises": [
+    {
+     "fen": "7k/P6p/8/8/8/8/7P/6RK w - - 0 1",
+     "linhas": [
+      {
+       "lance": "a7a8r",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 1
+       },
+       "variante": [
+        "a7a8r"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a7a8q",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 1
+       },
+       "variante": [
+        "a7a8q"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "h2h3",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 4
+       },
+       "variante": [
+        "h2h3"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "mateEm",
+      "lances": 1
+     },
+     "melhorLance": "a7a8r",
+     "profundidade": 16
+    },
+    {
+     "fen": "Q6k/7p/8/8/8/8/7P/6RK b - - 0 1",
+     "linhas": [
+      {
+       "lance": "",
+       "avaliacao": {
+        "tipo": "fimDeJogo",
+        "resultado": "brancasVencem"
+       },
+       "variante": [],
+       "profundidade": 0
+      }
+     ],
+     "avaliacao": {
+      "tipo": "fimDeJogo",
+      "resultado": "brancasVencem"
+     },
+     "melhorLance": "",
+     "profundidade": 0
+    }
+   ]
+  },
+  "longaFalsosBrilhantes": {
+   "pgn": "[Event \"?\"]\n[Site \"?\"]\n[Date \"????.??.??\"]\n[Round \"?\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"*\"]\n\n1. g3 e5 2. d4 d6 3. Nc3 Nc6 4. Nf3 Be7 5. d5 Nd4 6. Bg2 c5 7. e3 Nxf3+ 8. Bxf3 f5 9. e4 a6 10. h4 Qc7 11. Qe2 Bd8 12. a3 Qf7 13. exf5 Ba5 14. Bg5 Qxf5 15. Bh5+ Kd7 16. g4 Qf8 17. O-O Bxc3 18. Bc1 Kc7 19. f4 Bxg4 20. fxe5 Bxe2 21. exd6+ Kxd6 22. Rxf8 Bd4+ 23. Kh1 Nf6 24. Bf4+ Kxd5 25. Rxh8 Nxh5 26. c4+ Ke4 27. Re1 Rxh8 28. Bh6 gxh6 29. b3 Kf5 30. Rc1 Bf3+ 31. Kh2 Be5+ 32. Kh3 Nf4+ 33. Kg3 Ne2+ 34. Kf2 Nxc1 35. Kxf3 Bd4 36. Kg2 Rg8+ 37. Kf3 Rh8 38. h5 Re8 39. Kg3 Re3+ 40. Kh2 Kg4 41. a4 Kf3 42. b4 Re2+ 43. Kh3 cxb4 44. a5 Bg1 45. Kh4 Nd3 46. Kh3 Nc1 47. c5 Re5 48. c6 Bf2 49. c7 b3 50. c8=B Be3 51. Bg4+ Ke4 52. Bd7 Rxh5+ 53. Kg4 Rg5+ 54. Kh4 Kf3 55. Bc8 b2 56. Bxb7+ Ke2 57. Bxa6+ Kf3 58. Bb7+ Kf4 59. Kh3 Nd3 60. Be4 Rh5+ 61. Kg2 Kxe4 62. Kg3 b1=Q 63. Kg4 Rh1 64. Kg3 Rh5 65. a6 Bf4+ 66. Kg2 Rg5+ 67. Kh3 Qh1# *",
+   "analises": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+     "fen": "r1b2qnr/1p1k2pp/p2p4/2pPp2B/6PP/P1b5/1PP1QP2/R1B2RK1 b - - 1 18",
+     "linhas": [
+      {
+       "lance": "d7c7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -222
+       },
+       "variante": [
+        "d7c7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g7g6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -218
+       },
+       "variante": [
+        "g7g6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c3a5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -203
+       },
+       "variante": [
+        "c3a5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -222
+     },
+     "melhorLance": "d7c7",
+     "profundidade": 16
+    },
+    {
+     "fen": "r1b2qnr/1pk3pp/p2p4/2pPp2B/6PP/P1b5/1PP1QP2/R1B2RK1 w - - 2 19",
+     "linhas": [
+      {
+       "lance": "b2c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -197
+       },
+       "variante": [
+        "b2c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g4g5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -203
+       },
+       "variante": [
+        "g4g5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e2c4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -261
+       },
+       "variante": [
+        "e2c4"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -197
+     },
+     "melhorLance": "b2c3",
+     "profundidade": 16
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+     "fen": "r4R1r/1p4pp/p2k1n2/2pP3B/3b1B1P/P7/1PP1b3/R6K b - - 4 24",
+     "linhas": [
+      {
+       "lance": "d6d5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -227
+       },
+       "variante": [
+        "d6d5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d6d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -93
+       },
+       "variante": [
+        "d6d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d4e5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -66
+       },
+       "variante": [
+        "d4e5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -227
+     },
+     "melhorLance": "d6d5",
+     "profundidade": 16
+    },
+    {
+     "fen": "r4R1r/1p4pp/p4n2/2pk3B/3b1B1P/P7/1PP1b3/R6K w - - 0 25",
+     "linhas": [
+      {
+       "lance": "f8a8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -212
+       },
+       "variante": [
+        "f8a8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f8h8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -245
+       },
+       "variante": [
+        "f8h8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f8f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -359
+       },
+       "variante": [
+        "f8f6"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -212
+     },
+     "melhorLance": "f8a8",
+     "profundidade": 16
+    },
+    {
+     "fen": "r6R/1p4pp/p4n2/2pk3B/3b1B1P/P7/1PP1b3/R6K b - - 0 25",
+     "linhas": [
+      {
+       "lance": "f6h5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -242
+       },
+       "variante": [
+        "f6h5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "a8h8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -124
+       },
+       "variante": [
+        "a8h8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e2h5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 122
+       },
+       "variante": [
+        "e2h5"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -242
+     },
+     "melhorLance": "f6h5",
+     "profundidade": 16
+    },
+    {
+     "fen": "r6R/1p4pp/p7/2pk3n/3b1B1P/P7/1PP1b3/R6K w - - 0 26",
+     "linhas": [
+      {
+       "lance": "h8a8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -241
+       },
+       "variante": [
+        "h8a8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "c2c4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -459
+       },
+       "variante": [
+        "c2c4"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "h8b8",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": -550
+       },
+       "variante": [
+        "h8b8"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": -241
+     },
+     "melhorLance": "h8a8",
+     "profundidade": 16
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ }
+}

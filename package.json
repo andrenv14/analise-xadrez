@@ -11,7 +11,10 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "aberturas": "node scripts/gerar-aberturas.mjs",
-    "calibrar": "node scripts/calibrar.mjs"
+    "calibrar": "node scripts/calibrar.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "gravar-avaliacoes": "node scripts/gravar-avaliacoes.mjs"
   },
   "dependencies": {
     "chess.js": "^1.4.0",
@@ -27,6 +30,7 @@
     "@vitejs/plugin-react": "^6.1.0",
     "oxlint": "^1.79.0",
     "typescript": "~6.0.2",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   }
 }
