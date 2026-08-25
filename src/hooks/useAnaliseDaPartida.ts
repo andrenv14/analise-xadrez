@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnaliseCancelada, criarMotor } from '../engine'
 import type { AnaliseDePosicao, Motor } from '../engine'
 import { fenNoIndice } from '../chess/pgn'
@@ -23,19 +23,26 @@ const PROGRESSO_OCIOSO: ProgressoDaAnalise = {
 }
 
 /**
- * Analisa a partida em segundo plano.
+ * Analisa a partida em segundo plano, e posições avulsas sob demanda.
  *
- * A ordem **não** é do primeiro ao último lance: a posição que o usuário está
- * olhando fura a fila. Em máquina lenta, esperar o motor atravessar a partida
- * inteira para ver o lance 20 é a maior fonte de espera percebida — e é espera
- * por resultado que o usuário não pediu.
+ * A ordem da partida **não** é do primeiro ao último lance: a posição que o
+ * usuário está olhando fura a fila. Em máquina lenta, esperar o motor
+ * atravessar a partida inteira para ver o lance 20 é a maior fonte de espera
+ * percebida — e é espera por resultado que o usuário não pediu.
  *
- * O array devolvido tem uma entrada por posição, `null` onde o motor ainda não
- * chegou. Nada aqui bloqueia a renderização.
+ * `fenAvulsa` é a posição de uma variante, fora da partida. Ela entra na
+ * frente da fila do motor: é o que o usuário está olhando agora, e a partida
+ * pode esperar. Os resultados ficam num cache por FEN, para que navegar para
+ * frente e para trás dentro da variante não pague de novo.
  */
-export function useAnaliseDaPartida(jogo: ParsedGame | null, indiceSelecionado: number) {
+export function useAnaliseDaPartida(
+  jogo: ParsedGame | null,
+  indiceSelecionado: number,
+  fenAvulsa: string | null,
+) {
   const [analises, setAnalises] = useState<(AnaliseDePosicao | null)[]>([])
   const [progresso, setProgresso] = useState<ProgressoDaAnalise>(PROGRESSO_OCIOSO)
+  const [avulsas, setAvulsas] = useState<Record<string, AnaliseDePosicao>>({})
 
   const motorRef = useRef<Motor | null>(null)
   // Cada partida analisada ganha uma geração; resultados de gerações antigas
@@ -56,6 +63,11 @@ export function useAnaliseDaPartida(jogo: ParsedGame | null, indiceSelecionado: 
     }
   }, [])
 
+  const obterMotor = useCallback(() => {
+    motorRef.current ??= criarMotor()
+    return motorRef.current
+  }, [])
+
   // Zerar o resultado quando a partida troca é ajuste de estado, não efeito
   // colateral: fazer isso durante a render evita o flash de uma render com a
   // análise da partida anterior ainda na tela.
@@ -64,11 +76,13 @@ export function useAnaliseDaPartida(jogo: ParsedGame | null, indiceSelecionado: 
     setJogoAnterior(jogo)
     const total = jogo ? jogo.plies.length + 1 : 0
     setAnalises(new Array<AnaliseDePosicao | null>(total).fill(null))
+    setAvulsas({})
     setProgresso(
       jogo ? { estado: 'carregandoMotor', concluidas: 0, total, erro: null } : PROGRESSO_OCIOSO,
     )
   }
 
+  // --- Análise da partida --------------------------------------------------
   useEffect(() => {
     const geracao = ++geracaoRef.current
 
@@ -80,8 +94,7 @@ export function useAnaliseDaPartida(jogo: ParsedGame | null, indiceSelecionado: 
     const total = jogo.plies.length + 1
 
     motorRef.current?.cancelar()
-    motorRef.current ??= criarMotor()
-    const motor = motorRef.current
+    const motor = obterMotor()
 
     const desatualizada = () => geracaoRef.current !== geracao
 
@@ -96,9 +109,7 @@ export function useAnaliseDaPartida(jogo: ParsedGame | null, indiceSelecionado: 
 
         while (pendentes.size > 0) {
           const selecionada = selecaoRef.current
-          const proxima = pendentes.has(selecionada)
-            ? selecionada
-            : Math.min(...pendentes)
+          const proxima = pendentes.has(selecionada) ? selecionada : Math.min(...pendentes)
 
           const analise = await motor.analisar(fenNoIndice(jogo, proxima))
           if (desatualizada()) return
@@ -123,7 +134,44 @@ export function useAnaliseDaPartida(jogo: ParsedGame | null, indiceSelecionado: 
         }))
       }
     })()
-  }, [jogo])
+  }, [jogo, obterMotor])
 
-  return { analises, progresso }
+  // --- Análise da posição avulsa (variante) --------------------------------
+  // Efeito separado de propósito: a análise da partida é um laço longo que
+  // termina, e a variante pode aparecer bem depois dele. Amarrar as duas no
+  // mesmo laço exigiria mantê-lo vivo à toa.
+  useEffect(() => {
+    if (!fenAvulsa || avulsas[fenAvulsa]) return
+
+    const geracao = geracaoRef.current
+    const motor = obterMotor()
+    let descartada = false
+
+    void (async () => {
+      try {
+        await motor.pronto()
+        if (descartada || geracaoRef.current !== geracao) return
+        const analise = await motor.analisar(fenAvulsa, { prioritaria: true })
+        if (descartada || geracaoRef.current !== geracao) return
+        setAvulsas((anteriores) => ({ ...anteriores, [fenAvulsa]: analise }))
+      } catch {
+        // Falha aqui não derruba a partida: a variante simplesmente fica sem
+        // avaliação, e o painel diz que está esperando.
+      }
+    })()
+
+    return () => {
+      descartada = true
+    }
+  }, [fenAvulsa, avulsas, obterMotor])
+
+  /** Esquece as análises de variante. Chamado ao descartar uma variante. */
+  const esquecerAvulsas = useCallback(() => setAvulsas({}), [])
+
+  return {
+    analises,
+    progresso,
+    analiseAvulsa: fenAvulsa ? (avulsas[fenAvulsa] ?? null) : null,
+    esquecerAvulsas,
+  }
 }

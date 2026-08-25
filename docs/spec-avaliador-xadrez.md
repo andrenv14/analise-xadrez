@@ -53,6 +53,77 @@ alternativa que o motor preferia.
 - **No lance selecionado**: a avaliação da posição, a classificação do lance
   e **a alternativa que o motor preferia** (lance + avaliação dela).
 - **Resumo no fim**: contagem de cada classificação, por cor.
+- **Exploração de variantes**: mover as peças no tabuleiro sai da partida e
+  entra numa linha própria. Seção dedicada abaixo.
+
+## Exploração de variantes
+
+A partir de qualquer posição da partida, a pessoa move uma peça no tabuleiro e
+vê o que o motor acha do lance dela — "e se eu tivesse jogado isso".
+
+- **Arrastar ou clicar origem e destino** executa o lance, se for legal. Lance
+  ilegal simplesmente não acontece, **sem mensagem de erro**: numa exploração
+  livre, tentar o impossível é parte de explorar, não engano do usuário.
+- Do primeiro lance em diante a pessoa está numa **variante**, não mais na
+  partida, e isso é dito em três lugares: moldura no tabuleiro, aviso no painel
+  e o ramo na lista de lances.
+- **Exploração livre**: quantos lances quiser, dos dois lados, encadeando, sem
+  limite de profundidade.
+- Cada posição é analisada **sob demanda**, na mesma profundidade e mesmo
+  MultiPV da partida. Não é análise contínua: é uma posição por lance.
+- Mostra **avaliação e melhor resposta** do motor.
+- **Sair da variante** tem três caminhos, todos válidos: o botão "voltar à
+  partida", clicar em qualquer lance da partida principal, e `Esc`.
+- **Uma variante por vez.** Explorar a partir de outro lance descarta a
+  anterior. Acumular árvore de variantes é outro produto.
+
+### Sem classificação dentro da variante
+
+Ali há avaliação e melhor resposta, e **não** há brilhante/erro/imprecisão.
+Classificar um lance exige compará-lo com o que era possível na posição
+anterior — e numa exploração livre a posição anterior também é escolha do
+usuário. Chamar de "erro" um lance que ele está testando de propósito seria
+julgar a pergunta, não a resposta.
+
+### A variante tem prioridade no motor
+
+É o que a pessoa está olhando agora, então ela entra **na frente da fila**,
+pela mesma lógica que já prioriza a posição selecionada da partida. A busca em
+andamento não é interrompida — a prioridade vale para a próxima vez que a fila
+girar, o que custa no máximo uma posição de espera. Medido: variante avaliada
+em 1,3 s com a análise da partida na posição 3 de 34, e a partida seguiu em
+segundo plano depois.
+
+A **limpeza de hash** vale aqui igual: a variante passa pelo mesmo caminho do
+motor, então a reprodutibilidade conquistada com `go depth 16` + `ucinewgame`
+não se perde na exploração.
+
+### Aberturas na variante
+
+O nome da abertura é recalculado sobre "os lances da partida até a raiz" mais
+"os lances do usuário até aqui". Ele **atualiza** se a variante transpõe para
+outra teoria e **some** se ela sai do livro. Deixar o nome da partida principal
+preso na tela seria mentira: `1. d4` a partir da posição inicial da Ópera de
+Morphy não é mais uma Defesa Philidor.
+
+### Decisões de interface
+
+Tomadas ao implementar, todas por economia de escopo:
+
+- **Promoção é sempre para dama**, sem diálogo de escolha. Subpromoção em
+  exploração livre é raridade que não paga o custo de uma caixa de diálogo.
+- **Jogar a partir do meio da variante descarta o que vinha depois**, como
+  qualquer editor faz quando se digita no meio de um texto com histórico à
+  frente. A alternativa seria decidir o que fazer com uma cauda que não segue
+  mais da posição — o que é árvore de variantes por outro nome.
+- **Cores diferentes para lance da partida e lance do usuário** no destaque de
+  casas: amarelo para a partida, verde para a variante.
+- **O lance de onde a variante parte fica marcado, não selecionado.** O que
+  está no tabuleiro é a variante; ele é só o ponto de partida.
+- **`Esc` só age dentro da variante**, para não sequestrar a tecla no resto da
+  página.
+- As análises da variante ficam **em cache por FEN** e são descartadas junto
+  com ela, para que ir e voltar dentro da variante não pague de novo.
 
 ## Classificação de lance
 

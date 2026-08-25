@@ -46,6 +46,14 @@ export type OpcoesDeAnalise = {
   profundidade: number
   /** Quantas linhas candidatas pedir ao motor (`MultiPV`). */
   linhas: number
+  /**
+   * Entra na frente da fila em vez de no fim.
+   *
+   * É para a posição que o usuário está olhando agora — hoje, a posição de uma
+   * variante que ele acabou de criar. A busca em andamento não é interrompida:
+   * a prioridade vale para a próxima vez que a fila girar.
+   */
+  prioritaria: boolean
 }
 
 export interface Motor {

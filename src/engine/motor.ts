@@ -35,9 +35,12 @@ class MotorStockfish implements Motor {
     const completas: OpcoesDeAnalise = {
       profundidade: opcoes.profundidade ?? PROFUNDIDADE_DE_ANALISE,
       linhas: opcoes.linhas ?? LINHAS_DO_MOTOR,
+      prioritaria: opcoes.prioritaria ?? false,
     }
     return new Promise<AnaliseDePosicao>((resolver, rejeitar) => {
-      this.fila.push({ fen, opcoes: completas, resolver, rejeitar })
+      const tarefa: Tarefa = { fen, opcoes: completas, resolver, rejeitar }
+      if (completas.prioritaria) this.fila.unshift(tarefa)
+      else this.fila.push(tarefa)
       void this.girarFila()
     })
   }

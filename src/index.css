@@ -590,3 +590,93 @@ button.primario {
   outline: 2px solid var(--destaque);
   outline-offset: 2px;
 }
+
+/* --- Exploração de variantes -------------------------------------------- */
+/* Sinal visual em três lugares: moldura do tabuleiro, aviso no painel e o
+   ramo na lista. Sair da variante é a única coisa que precisa ficar óbvia. */
+
+.tabuleiro-com-eval.na-variante .tabuleiro {
+  outline: 2px solid var(--destaque);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.painel-motor--variante {
+  border-bottom-color: var(--destaque);
+}
+
+.aviso-variante {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--destaque);
+  background: rgba(111, 158, 106, 0.12);
+}
+
+.aviso-variante__titulo {
+  margin: 0 0 0.15rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--destaque);
+}
+
+.aviso-variante__texto {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  color: var(--texto-fraco);
+  line-height: 1.45;
+}
+
+.aviso-variante button {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+.aviso-variante kbd {
+  margin-left: 0.35rem;
+  padding: 0.02rem 0.28rem;
+  border-radius: 3px;
+  border: 1px solid rgba(16, 19, 15, 0.35);
+  background: rgba(16, 19, 15, 0.12);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+}
+
+.abertura--variante {
+  margin: 0 0 0.6rem;
+}
+
+/* O lance de onde a variante parte fica marcado, mas não selecionado: o que
+   está no tabuleiro é a variante, não ele. */
+.move--raiz-da-variante {
+  border-color: var(--destaque);
+  color: var(--destaque);
+}
+
+.ramo-da-variante {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: 0.15rem 0 0.3rem 0.6rem;
+  padding-left: 0.6rem;
+  border-left: 2px solid var(--destaque);
+}
+
+.ramo-da-variante__rotulo {
+  flex: none;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--destaque);
+  padding-top: 0.28rem;
+}
+
+.ramo-da-variante__lances {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+}
+
+.move--na-variante {
+  font-style: italic;
+}
