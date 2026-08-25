@@ -105,7 +105,10 @@ class MotorStockfish implements Motor {
         parar()
         clearTimeout(cronometro)
 
-        const analise = montarAnalise(tarefa.fen, infos, lerMelhorLance(linha))
+        const analise = montarAnalise(tarefa.fen, infos, lerMelhorLance(linha), {
+          profundidade: tarefa.opcoes.profundidade,
+          linhas: tarefa.opcoes.linhas,
+        })
         if (!analise) {
           rejeitar(new ErroDoMotor('O motor terminou a busca sem informar avaliação.'))
           return

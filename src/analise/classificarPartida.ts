@@ -4,6 +4,7 @@ import { aberturaDaPartida, limiteDaTeoria } from './aberturas'
 import type { Abertura } from './aberturas'
 import { classificarLance } from './classificacao'
 import type { LanceClassificado } from './classificacao'
+import { plysContestados } from './consistencia'
 
 export type PartidaClassificada = {
   /**
@@ -38,6 +39,14 @@ export function classificarPartida(
     if (!antes || !depois) return null
     return classificarLance(antes, depois, ply.uci, ply.ply <= limite)
   })
+
+  // Marcar depois de classificar mantém `classificarLance` alheio à questão:
+  // ele decide sobre os dados que recebeu, e a contestação é uma propriedade
+  // do par de buscas, não do lance.
+  for (const ply of plysContestados(jogo, analises)) {
+    const lance = lances[ply - 1]
+    if (lance) lance.contestado = true
+  }
 
   return { lances, abertura: aberturaDaPartida(fensPorPly), limiteDaTeoria: limite }
 }

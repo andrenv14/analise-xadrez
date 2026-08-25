@@ -16,12 +16,14 @@ export function ProgressoDoMotor({ progresso }: { progresso: ProgressoDaAnalise 
   const texto =
     estado === 'carregandoMotor'
       ? 'Carregando o motor…'
-      : estado === 'concluida'
-        ? `Análise concluída — ${total} posições`
-        // A fila prioriza a posição selecionada, então a ordem não é
-        // sequencial: contar as concluídas é honesto, dizer "analisando a 12"
-        // não seria.
-        : `Analisando — ${concluidas} de ${total} posições`
+      : estado === 'reanalisando'
+        ? `Reconferindo ${total} ${total === 1 ? 'posição' : 'posições'}`
+        : estado === 'concluida'
+          ? `Análise concluída — ${total} posições`
+          // A fila prioriza a posição selecionada, então a ordem não é
+          // sequencial: contar as concluídas é honesto, dizer "analisando a 12"
+          // não seria.
+          : `Analisando — ${concluidas} de ${total} posições`
 
   return (
     <div className={estado === 'concluida' ? 'progresso progresso--pronto' : 'progresso'}>

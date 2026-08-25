@@ -680,3 +680,12 @@ button.primario {
 .move--na-variante {
   font-style: italic;
 }
+
+/* --- Lance com avaliação contestada -------------------------------------- */
+
+.contestado {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--texto-fraco);
+}

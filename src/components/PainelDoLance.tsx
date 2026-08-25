@@ -84,6 +84,9 @@ export function PainelDoLance({
             <p className="classificacao__titulo classificacao__titulo--neutro">Sem classificação</p>
           )}
           <p className="classificacao__motivo">{classificado.motivo}</p>
+          {classificado.contestado && (
+            <p className="contestado">O motor discorda de si mesmo aqui.</p>
+          )}
 
           {alternativa && (
             <p className="alternativa">

@@ -143,7 +143,7 @@ async function analisarPartida(nucleo, jogo, { tempoMs, profundidade, linhas, li
     const bestmove = await motor.esperar((l) => l.startsWith('bestmove'))
     piorPosicaoMs = Math.max(piorPosicaoMs, Date.now() - t0)
     parar()
-    analises.push(nucleo.montarAnalise(fen, infos, nucleo.lerMelhorLance(bestmove)))
+    analises.push(nucleo.montarAnalise(fen, infos, nucleo.lerMelhorLance(bestmove), { profundidade, linhas }))
   }
 
   const decorridoMs = Date.now() - inicio

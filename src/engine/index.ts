@@ -14,6 +14,7 @@ export { AnaliseCancelada, ErroDoMotor } from './tipos'
 export type {
   AnaliseDePosicao,
   Avaliacao,
+  ConfiguracaoDaBusca,
   LinhaDoMotor,
   Motor,
   OpcoesDeAnalise,

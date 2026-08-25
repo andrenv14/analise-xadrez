@@ -24,6 +24,18 @@ export type LinhaDoMotor = {
   profundidade: number
 }
 
+/**
+ * Ajuste com que uma posição foi buscada.
+ *
+ * Duas análises só são comparáveis entre si quando vieram do mesmo ajuste:
+ * confrontar uma estimativa de MultiPV 5 com uma medida de MultiPV 3 inventa
+ * discordância onde não há.
+ */
+export type ConfiguracaoDaBusca = {
+  profundidade: number
+  linhas: number
+}
+
 export type AnaliseDePosicao = {
   /** FEN analisada, para conferência. */
   fen: string
@@ -39,6 +51,8 @@ export type AnaliseDePosicao = {
   melhorLance: string | null
   /** Profundidade atingida na busca. */
   profundidade: number
+  /** Ajuste pedido ao motor — não o que ele atingiu. */
+  configuracao: ConfiguracaoDaBusca
 }
 
 export type OpcoesDeAnalise = {

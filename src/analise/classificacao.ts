@@ -27,6 +27,12 @@ export type LanceClassificado = {
   perdaCp: number
   /** O que o motor preferia, quando não foi o lance jogado. */
   alternativa: { lanceUci: string; avaliacao: Avaliacao } | null
+  /**
+   * As duas buscas que cercam este lance se contradizem, e a reanálise não
+   * resolveu. A classificação abaixo é a melhor leitura possível de dados
+   * que não fecham entre si.
+   */
+  contestado?: boolean
 }
 
 /** Aplica o teto de posição decidida antes de comparar duas avaliações. */

@@ -3,8 +3,16 @@ import { AnaliseCancelada, criarMotor } from '../engine'
 import type { AnaliseDePosicao, Motor } from '../engine'
 import { fenNoIndice } from '../chess/pgn'
 import type { ParsedGame } from '../chess/pgn'
+import { LINHAS_NA_REANALISE, posicoesAReanalisar } from '../analise/consistencia'
 
-export type EstadoDaAnalise = 'ocioso' | 'carregandoMotor' | 'analisando' | 'concluida' | 'erro'
+export type EstadoDaAnalise =
+  | 'ocioso'
+  | 'carregandoMotor'
+  | 'analisando'
+  /** Segunda passada nas posições em que as buscas vizinhas se contradizem. */
+  | 'reanalisando'
+  | 'concluida'
+  | 'erro'
 
 export type ProgressoDaAnalise = {
   estado: EstadoDaAnalise
@@ -104,6 +112,20 @@ export function useAnaliseDaPartida(
         if (desatualizada()) return
         setProgresso((p) => ({ ...p, estado: 'analisando' }))
 
+        // Espelho local do que já foi analisado. O laço precisa do array
+        // inteiro para achar as contradições, e ler estado do React aqui
+        // daria uma versão atrasada.
+        const locais: (AnaliseDePosicao | null)[] = new Array(total).fill(null)
+
+        const registrar = (indice: number, analise: AnaliseDePosicao) => {
+          locais[indice] = analise
+          setAnalises((anteriores) => {
+            const copia = [...anteriores]
+            copia[indice] = analise
+            return copia
+          })
+        }
+
         // Posições que faltam, em ordem. A selecionada sai daqui na frente.
         const pendentes = new Set<number>(Array.from({ length: total }, (_, i) => i))
 
@@ -115,16 +137,35 @@ export function useAnaliseDaPartida(
           if (desatualizada()) return
 
           pendentes.delete(proxima)
-          setAnalises((anteriores) => {
-            const copia = [...anteriores]
-            copia[proxima] = analise
-            return copia
-          })
+          registrar(proxima, analise)
           setProgresso((p) => ({ ...p, concluidas: total - pendentes.size }))
         }
 
+        // --- Segunda passada -------------------------------------------
+        // Onde duas buscas vizinhas se contradizem sobre a mesma posição,
+        // uma delas está errada. A checagem é sobre resultados que a fila
+        // já produziu — custo zero. Só as posições que reprovam pagam
+        // análise mais cara, e cada uma no máximo uma vez.
+        const alvos = posicoesAReanalisar(jogo, locais)
+        if (alvos.length > 0) {
+          setProgresso((p) => ({
+            ...p,
+            estado: 'reanalisando',
+            concluidas: 0,
+            total: alvos.length,
+          }))
+          for (const [feitas, alvo] of alvos.entries()) {
+            const analise = await motor.analisar(fenNoIndice(jogo, alvo), {
+              linhas: LINHAS_NA_REANALISE,
+            })
+            if (desatualizada()) return
+            registrar(alvo, analise)
+            setProgresso((p) => ({ ...p, concluidas: feitas + 1 }))
+          }
+        }
+
         if (desatualizada()) return
-        setProgresso((p) => ({ ...p, estado: 'concluida' }))
+        setProgresso((p) => ({ ...p, estado: 'concluida', concluidas: total, total }))
       } catch (erro) {
         if (desatualizada() || erro instanceof AnaliseCancelada) return
         setProgresso((p) => ({

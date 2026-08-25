@@ -1,5 +1,5 @@
 import { corQueJoga, paraPontoDeVistaDasBrancas } from './avaliacao'
-import type { AnaliseDePosicao, LinhaDoMotor } from './tipos'
+import type { AnaliseDePosicao, ConfiguracaoDaBusca, LinhaDoMotor } from './tipos'
 
 /** Score cru do UCI, ainda do ponto de vista de quem está para jogar. */
 export type ScoreCru = { tipo: 'cp' | 'mate'; valor: number }
@@ -54,6 +54,7 @@ export function montarAnalise(
   fen: string,
   infos: Map<number, InfoDeLinha>,
   melhorLanceDoBestmove: string | null,
+  configuracao: ConfiguracaoDaBusca,
 ): AnaliseDePosicao | null {
   if (infos.size === 0) return null
 
@@ -81,6 +82,7 @@ export function montarAnalise(
       avaliacao: paraPontoDeVistaDasBrancas(info.score, quemJoga, false),
       melhorLance: null,
       profundidade: info.profundidade,
+      configuracao,
     }
   }
 
@@ -90,5 +92,6 @@ export function montarAnalise(
     avaliacao: principal.avaliacao,
     melhorLance: melhorLanceDoBestmove ?? principal.lance,
     profundidade: principal.profundidade,
+    configuracao,
   }
 }

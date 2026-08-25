@@ -48,7 +48,11 @@
       "centipeoes": 42
      },
      "melhorLance": "e2e4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
@@ -92,7 +96,11 @@
       "centipeoes": 30
      },
      "melhorLance": "e7e5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
@@ -136,7 +144,11 @@
       "centipeoes": 43
      },
      "melhorLance": "g1f3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
@@ -180,7 +192,11 @@
       "centipeoes": 44
      },
      "melhorLance": "g8f6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/ppp2ppp/3p4/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3",
@@ -224,7 +240,11 @@
       "centipeoes": 45
      },
      "melhorLance": "f1c4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/ppp2ppp/3p4/4p3/3PP3/5N2/PPP2PPP/RNBQKB1R b KQkq - 0 3",
@@ -268,7 +288,11 @@
       "centipeoes": 53
      },
      "melhorLance": "g8f6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkbnr/ppp2ppp/3p4/4p3/3PP1b1/5N2/PPP2PPP/RNBQKB1R w KQkq - 1 4",
@@ -312,7 +336,11 @@
       "centipeoes": 101
      },
      "melhorLance": "d4e5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkbnr/ppp2ppp/3p4/4P3/4P1b1/5N2/PPP2PPP/RNBQKB1R b KQkq - 0 4",
@@ -356,7 +384,11 @@
       "centipeoes": 73
      },
      "melhorLance": "b8c6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkbnr/ppp2ppp/3p4/4P3/4P3/5b2/PPP2PPP/RNBQKB1R w KQkq - 0 5",
@@ -400,7 +432,11 @@
       "centipeoes": 117
      },
      "melhorLance": "d1f3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkbnr/ppp2ppp/3p4/4P3/4P3/5Q2/PPP2PPP/RNB1KB1R b KQkq - 0 5",
@@ -444,7 +480,11 @@
       "centipeoes": 112
      },
      "melhorLance": "d6e5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkbnr/ppp2ppp/8/4p3/4P3/5Q2/PPP2PPP/RNB1KB1R w KQkq - 0 6",
@@ -488,7 +528,11 @@
       "centipeoes": 117
      },
      "melhorLance": "f1c4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkbnr/ppp2ppp/8/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R b KQkq - 1 6",
@@ -532,7 +576,11 @@
       "centipeoes": 118
      },
      "melhorLance": "d8d7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkb1r/ppp2ppp/5n2/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R w KQkq - 2 7",
@@ -576,7 +624,11 @@
       "centipeoes": 215
      },
      "melhorLance": "f3b3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkb1r/ppp2ppp/5n2/4p3/2B1P3/1Q6/PPP2PPP/RNB1K2R b KQkq - 3 7",
@@ -620,7 +672,11 @@
       "centipeoes": 206
      },
      "melhorLance": "f8c5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/ppp1qppp/5n2/4p3/2B1P3/1Q6/PPP2PPP/RNB1K2R w KQkq - 4 8",
@@ -664,7 +720,11 @@
       "centipeoes": 231
      },
      "melhorLance": "b3b7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/ppp1qppp/5n2/4p3/2B1P3/1QN5/PPP2PPP/R1B1K2R b KQkq - 5 8",
@@ -708,7 +768,11 @@
       "centipeoes": 170
      },
      "melhorLance": "c7c6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/pp2qppp/2p2n2/4p3/2B1P3/1QN5/PPP2PPP/R1B1K2R w KQkq - 0 9",
@@ -752,7 +816,11 @@
       "centipeoes": 160
      },
      "melhorLance": "c1g5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/pp2qppp/2p2n2/4p1B1/2B1P3/1QN5/PPP2PPP/R3K2R b KQkq - 1 9",
@@ -796,7 +864,11 @@
       "centipeoes": 166
      },
      "melhorLance": "e7c7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/p3qppp/2p2n2/1p2p1B1/2B1P3/1QN5/PPP2PPP/R3K2R w KQkq - 0 10",
@@ -840,7 +912,11 @@
       "centipeoes": 288
      },
      "melhorLance": "c3b5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/p3qppp/2p2n2/1N2p1B1/2B1P3/1Q6/PPP2PPP/R3K2R b KQkq - 0 10",
@@ -884,7 +960,11 @@
       "centipeoes": 298
      },
      "melhorLance": "e7b4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/p3qppp/5n2/1p2p1B1/2B1P3/1Q6/PPP2PPP/R3K2R w KQkq - 0 11",
@@ -928,7 +1008,11 @@
       "centipeoes": 440
      },
      "melhorLance": "c4b5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn2kb1r/p3qppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/R3K2R b KQkq - 0 11",
@@ -972,7 +1056,11 @@
       "centipeoes": 486
      },
      "melhorLance": "b8d7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "r3kb1r/p2nqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/R3K2R w KQkq - 1 12",
@@ -1016,7 +1104,11 @@
       "centipeoes": 382
      },
      "melhorLance": "e1c1",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "r3kb1r/p2nqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR3R b kq - 2 12",
@@ -1060,7 +1152,11 @@
       "centipeoes": 465
      },
      "melhorLance": "e7c5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "3rkb1r/p2nqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR3R w k - 3 13",
@@ -1104,7 +1200,11 @@
       "centipeoes": 450
      },
      "melhorLance": "d1d7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "3rkb1r/p2Rqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2K4R b k - 0 13",
@@ -1148,7 +1248,11 @@
       "centipeoes": 540
      },
      "melhorLance": "f6d7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "4kb1r/p2rqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2K4R w k - 0 14",
@@ -1192,7 +1296,11 @@
       "centipeoes": 554
      },
      "melhorLance": "h1d1",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "4kb1r/p2rqppp/5n2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR4 b k - 1 14",
@@ -1236,7 +1344,11 @@
       "centipeoes": 571
      },
      "melhorLance": "e7d6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "4kb1r/p2r1ppp/4qn2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 2 15",
@@ -1280,7 +1392,11 @@
       "centipeoes": 665
      },
      "melhorLance": "b5d7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "4kb1r/p2B1ppp/4qn2/4p1B1/4P3/1Q6/PPP2PPP/2KR4 b k - 0 15",
@@ -1324,7 +1440,11 @@
       "centipeoes": 275
      },
      "melhorLance": "f6d7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "4kb1r/p2n1ppp/4q3/4p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 0 16",
@@ -1368,7 +1488,11 @@
       "lances": 2
      },
      "melhorLance": "b3b8",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "1Q2kb1r/p2n1ppp/4q3/4p1B1/4P3/8/PPP2PPP/2KR4 b k - 1 16",
@@ -1390,7 +1514,11 @@
       "lances": 1
      },
      "melhorLance": "d7b8",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "1n2kb1r/p4ppp/4q3/4p1B1/4P3/8/PPP2PPP/2KR4 w k - 0 17",
@@ -1434,7 +1562,11 @@
       "lances": 1
      },
      "melhorLance": "d1d8",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "1n1Rkb1r/p4ppp/4q3/4p1B1/4P3/8/PPP2PPP/2K5 b k - 1 17",
@@ -1454,9 +1586,214 @@
       "resultado": "brancasVencem"
      },
      "melhorLance": "",
-     "profundidade": 0
+     "profundidade": 0,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     }
-   ]
+   ],
+   "reanalises": {
+    "28": {
+     "fen": "4kb1r/p2r1ppp/4qn2/1B2p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 2 15",
+     "linhas": [
+      {
+       "lance": "b5d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 641
+       },
+       "variante": [
+        "b5d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "g5f6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 579
+       },
+       "variante": [
+        "g5f6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 494
+       },
+       "variante": [
+        "b3c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3e6",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 380
+       },
+       "variante": [
+        "b3e6"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b5a4",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 310
+       },
+       "variante": [
+        "b5a4"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 641
+     },
+     "melhorLance": "b5d7",
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 5
+     }
+    },
+    "29": {
+     "fen": "4kb1r/p2B1ppp/4qn2/4p1B1/4P3/1Q6/PPP2PPP/2KR4 b k - 0 15",
+     "linhas": [
+      {
+       "lance": "e6d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 638
+       },
+       "variante": [
+        "e6d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e8e7",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 4
+       },
+       "variante": [
+        "e8e7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "f6d7",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 2
+       },
+       "variante": [
+        "f6d7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "e8d8",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 2
+       },
+       "variante": [
+        "e8d8"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "centipeoes",
+      "centipeoes": 638
+     },
+     "melhorLance": "e6d7",
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 5
+     }
+    },
+    "30": {
+     "fen": "4kb1r/p2n1ppp/4q3/4p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 0 16",
+     "linhas": [
+      {
+       "lance": "b3b8",
+       "avaliacao": {
+        "tipo": "mateEm",
+        "lances": 2
+       },
+       "variante": [
+        "b3b8"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3b7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 287
+       },
+       "variante": [
+        "b3b7"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3c3",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 281
+       },
+       "variante": [
+        "b3c3"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "b3b5",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 24
+       },
+       "variante": [
+        "b3b5"
+       ],
+       "profundidade": 16
+      },
+      {
+       "lance": "d1d7",
+       "avaliacao": {
+        "tipo": "centipeoes",
+        "centipeoes": 0
+       },
+       "variante": [
+        "d1d7"
+       ],
+       "profundidade": 16
+      }
+     ],
+     "avaliacao": {
+      "tipo": "mateEm",
+      "lances": 2
+     },
+     "melhorLance": "b3b8",
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 5
+     }
+    }
+   }
   },
   "bobo": {
    "pgn": "1. f3 e5 2. g4 Qh4# 0-1",
@@ -1503,7 +1840,11 @@
       "centipeoes": 42
      },
      "melhorLance": "e2e4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pppppppp/8/8/8/5P2/PPPPP1PP/RNBQKBNR b KQkq - 0 1",
@@ -1547,7 +1888,11 @@
       "centipeoes": -72
      },
      "melhorLance": "e7e5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pppp1ppp/8/4p3/8/5P2/PPPPP1PP/RNBQKBNR w KQkq - 0 2",
@@ -1591,7 +1936,11 @@
       "centipeoes": -63
      },
      "melhorLance": "e2e4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pppp1ppp/8/4p3/6P1/5P2/PPPPP2P/RNBQKBNR b KQkq - 0 2",
@@ -1635,7 +1984,11 @@
       "lances": -1
      },
      "melhorLance": "d8h4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3",
@@ -1655,7 +2008,11 @@
       "resultado": "pretasVencem"
      },
      "melhorLance": "",
-     "profundidade": 0
+     "profundidade": 0,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     }
    ]
   },
@@ -1704,7 +2061,11 @@
       "centipeoes": 42
      },
      "melhorLance": "e2e4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
@@ -1748,7 +2109,11 @@
       "centipeoes": 30
      },
      "melhorLance": "e7e5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
@@ -1792,7 +2157,11 @@
       "centipeoes": 38
      },
      "melhorLance": "g1f3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
@@ -1836,7 +2205,11 @@
       "centipeoes": 43
      },
      "melhorLance": "e7e6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pp2pppp/3p4/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3",
@@ -1880,7 +2253,11 @@
       "centipeoes": 42
      },
      "melhorLance": "d2d4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pp2pppp/3p4/2p5/3PP3/5N2/PPP2PPP/RNBQKB1R b KQkq - 0 3",
@@ -1924,7 +2301,11 @@
       "centipeoes": 42
      },
      "melhorLance": "c5d4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pp2pppp/3p4/8/3pP3/5N2/PPP2PPP/RNBQKB1R w KQkq - 0 4",
@@ -1968,7 +2349,11 @@
       "centipeoes": 54
      },
      "melhorLance": "f3d4",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkbnr/pp2pppp/3p4/8/3NP3/8/PPP2PPP/RNBQKB1R b KQkq - 0 4",
@@ -2012,7 +2397,11 @@
       "centipeoes": 46
      },
      "melhorLance": "g8f6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkb1r/pp2pppp/3p1n2/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 1 5",
@@ -2056,7 +2445,11 @@
       "centipeoes": 43
      },
      "melhorLance": "b1c3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkb1r/pp2pppp/3p1n2/8/3NP3/2N5/PPP2PPP/R1BQKB1R b KQkq - 2 5",
@@ -2100,7 +2493,11 @@
       "centipeoes": 44
      },
      "melhorLance": "a7a6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkb1r/1p2pppp/p2p1n2/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 6",
@@ -2144,7 +2541,11 @@
       "centipeoes": 50
      },
      "melhorLance": "c1e3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkb1r/1p2pppp/p2p1n2/8/3NP3/2N1B3/PPP2PPP/R2QKB1R b KQkq - 1 6",
@@ -2188,7 +2589,11 @@
       "centipeoes": 43
      },
      "melhorLance": "e7e5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkb1r/1p3ppp/p2p1n2/4p3/3NP3/2N1B3/PPP2PPP/R2QKB1R w KQkq - 0 7",
@@ -2232,7 +2637,11 @@
       "centipeoes": 43
      },
      "melhorLance": "d4b3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rnbqkb1r/1p3ppp/p2p1n2/4p3/4P3/1NN1B3/PPP2PPP/R2QKB1R b KQkq - 1 7",
@@ -2276,7 +2685,11 @@
       "centipeoes": 43
      },
      "melhorLance": "f8e7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkb1r/1p3ppp/p2pbn2/4p3/4P3/1NN1B3/PPP2PPP/R2QKB1R w KQkq - 2 8",
@@ -2320,7 +2733,11 @@
       "centipeoes": 46
      },
      "melhorLance": "d1d2",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qkb1r/1p3ppp/p2pbn2/4p3/4P3/1NN1BP2/PPP3PP/R2QKB1R b KQkq - 0 8",
@@ -2364,7 +2781,11 @@
       "centipeoes": 41
      },
      "melhorLance": "b8d7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qk2r/1p2bppp/p2pbn2/4p3/4P3/1NN1BP2/PPP3PP/R2QKB1R w KQkq - 1 9",
@@ -2408,7 +2829,11 @@
       "centipeoes": 44
      },
      "melhorLance": "d1d2",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1qk2r/1p2bppp/p2pbn2/4p3/4P3/1NN1BP2/PPPQ2PP/R3KB1R b KQkq - 2 9",
@@ -2452,7 +2877,11 @@
       "centipeoes": 51
      },
      "melhorLance": "h7h6",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "rn1q1rk1/1p2bppp/p2pbn2/4p3/4P3/1NN1BP2/PPPQ2PP/R3KB1R w KQ - 3 10",
@@ -2496,7 +2925,11 @@
       "centipeoes": 53
      },
      "melhorLance": "e1c1",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     }
    ]
   },
@@ -2545,7 +2978,11 @@
       "lances": 1
      },
      "melhorLance": "a7a8r",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "Q6k/7p/8/8/8/8/7P/6RK b - - 0 1",
@@ -2565,7 +3002,11 @@
       "resultado": "brancasVencem"
      },
      "melhorLance": "",
-     "profundidade": 0
+     "profundidade": 0,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     }
    ]
   },
@@ -2649,7 +3090,11 @@
       "centipeoes": -222
      },
      "melhorLance": "d7c7",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "r1b2qnr/1pk3pp/p2p4/2pPp2B/6PP/P1b5/1PP1QP2/R1B2RK1 w - - 2 19",
@@ -2693,7 +3138,11 @@
       "centipeoes": -197
      },
      "melhorLance": "b2c3",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     null,
     null,
@@ -2747,7 +3196,11 @@
       "centipeoes": -227
      },
      "melhorLance": "d6d5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "r4R1r/1p4pp/p4n2/2pk3B/3b1B1P/P7/1PP1b3/R6K w - - 0 25",
@@ -2791,7 +3244,11 @@
       "centipeoes": -212
      },
      "melhorLance": "f8a8",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "r6R/1p4pp/p4n2/2pk3B/3b1B1P/P7/1PP1b3/R6K b - - 0 25",
@@ -2835,7 +3292,11 @@
       "centipeoes": -242
      },
      "melhorLance": "f6h5",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     {
      "fen": "r6R/1p4pp/p7/2pk3n/3b1B1P/P7/1PP1b3/R6K w - - 0 26",
@@ -2879,7 +3340,11 @@
       "centipeoes": -241
      },
      "melhorLance": "h8a8",
-     "profundidade": 16
+     "profundidade": 16,
+     "configuracao": {
+      "profundidade": 16,
+      "linhas": 3
+     }
     },
     null,
     null,

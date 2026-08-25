@@ -67,7 +67,12 @@ motor.enviar('setoption name Threads value 1')
 motor.enviar(`setoption name MultiPV value ${LINHAS}`)
 motor.enviar('isready'); await motor.esperar((l) => l === 'readyok')
 
-async function analisar(fen) {
+let linhasAtuais = LINHAS
+async function analisar(fen, linhas = LINHAS) {
+  if (linhasAtuais !== linhas) {
+    motor.enviar(`setoption name MultiPV value ${linhas}`)
+    linhasAtuais = linhas
+  }
   motor.enviar('ucinewgame'); motor.enviar('isready'); await motor.esperar((l) => l === 'readyok')
   const infos = new Map()
   const parar = motor.coletar((l) => {
@@ -79,7 +84,7 @@ async function analisar(fen) {
   motor.enviar(`go depth ${PROFUNDIDADE}`)
   const bm = await motor.esperar((l) => l.startsWith('bestmove'))
   parar()
-  const analise = nucleo.montarAnalise(fen, infos, nucleo.lerMelhorLance(bm))
+  const analise = nucleo.montarAnalise(fen, infos, nucleo.lerMelhorLance(bm), { profundidade: PROFUNDIDADE, linhas })
   // A variante completa não é lida por nada na classificação — só o primeiro
   // lance importa. Truncar mantém a fixture legível.
   return {
@@ -96,6 +101,21 @@ async function gravarPartida(pgn) {
     analises.push(await analisar(nucleo.fenNoIndice(jogo, i)))
   }
   return { pgn, analises }
+}
+
+/**
+ * Grava também a segunda passada: as posições que a checagem de consistência
+ * manda reanalisar, com o MultiPV alargado. É o que o app faz em produção.
+ */
+async function gravarComReanalise(pgn) {
+  const base = await gravarPartida(pgn)
+  const jogo = nucleo.parsePgn(pgn)
+  const alvos = nucleo.posicoesAReanalisar(jogo, base.analises)
+  const reanalises = {}
+  for (const i of alvos) {
+    reanalises[i] = await analisar(nucleo.fenNoIndice(jogo, i), nucleo.LINHAS_NA_REANALISE)
+  }
+  return { ...base, reanalises }
 }
 
 /** Grava só os índices pedidos; os demais ficam `null`. */
@@ -123,7 +143,7 @@ const fixture = {
 }
 
 for (const [nome, tarefa] of [
-  ['morphy', () => gravarPartida(MORPHY)],
+  ['morphy', () => gravarComReanalise(MORPHY)],
   ['bobo', () => gravarPartida(BOBO)],
   ['najdorf', () => gravarPartida(NAJDORF)],
   ['promocaoComMate', () => gravarPartida(PROMOCAO)],

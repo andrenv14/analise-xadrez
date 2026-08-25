@@ -121,6 +121,47 @@ MultiPV 2 com MultiPV 3 nas mesmas 34 posições, a **avaliação da primeira li
 difere em 27 delas**, e o próprio lance principal difere em 9. Baixar o MultiPV
 não entrega a mesma análise mais barata: entrega outra análise.
 
+### Quando o motor discorda de si mesmo
+
+Duas buscas vizinhas podem se contradizer sobre a **mesma** posição, e quando
+isso acontece o erro vaza para a tela.
+
+A comparação que revela isso não é entre a avaliação da posição N e a da N+1 —
+essa mistura duas coisas inseparáveis: o lance mudou a posição (xadrez) e o
+motor mudou de ideia (erro). O MultiPV dá a comparação limpa: **a linha da
+posição N correspondente ao lance jogado já é uma avaliação da posição N+1**.
+Confrontá-la com a avaliação que a própria busca de N+1 devolveu compara duas
+leituras da mesma posição, e ali qualquer diferença é inconsistência.
+
+O caso que motivou isto está na partida de exemplo. A posição após `14... Qe6`
+estimava `Bxd7+` em +6.65; a busca da posição seguinte media +2.75. Pior que os
+3,90 peões de diferença: o motor apontava `15... Nxd7` como a melhor defesa das
+pretas quando ele **perde por mate em 2**, e o app repetia isso na tela. O que
+a profundidade 16 não enxerga é a própria combinação de Morphy — para ver que
+`Nxd7` perde, é preciso achar `16.Qb8+`, entregar a dama, dois lances adiante.
+
+A checagem custa zero: é feita sobre resultados que a fila já produziu. Só as
+posições que reprovam pagam análise mais cara, e o **par inteiro** é
+reanalisado, porque não se sabe qual das duas buscas errou. Medido: 3 posições
+de 34 na partida de exemplo (+8% de tempo), 12 de 135 numa partida amadora de
+134 lances (+5%).
+
+A reanálise **alarga o MultiPV para 5 e mantém a profundidade em 16**. Aumentar
+a profundidade de algumas posições tornaria as avaliações incomparáveis ao
+longo da partida: a perda de centipeões calculada atravessando a fronteira
+entre uma posição funda e uma rasa mede a diferença entre as duas buscas, não o
+lance. Medindo, isso não é teórico — escalar para profundidade 20 mudava a
+classificação de `14... Qe6` de imprecisão para capivara sem que nada tivesse
+mudado naquele lance, só porque a vizinha ficou mais funda.
+
+Pela mesma razão, **a checagem só compara pares analisados no mesmo ajuste**.
+Sem essa regra o remédio fabrica o sintoma, nas fronteiras que ele mesmo cria:
+numa partida de 134 lances, 2 dos 5 casos que "sobreviviam" à reanálise eram
+pares de fronteira, não contradições.
+
+Cada posição é reanalisada no máximo uma vez. O processo termina por
+construção, não por convenção.
+
 ---
 
 ## Como a classificação foi definida
@@ -282,6 +323,18 @@ peões em posição igual. A alternativa — converter tudo para probabilidade d
 vitória — daria uma curva mais suave, ao custo de abandonar o centipeão como
 unidade visível.
 
+**A checagem de consistência não cobre todos os lances.** Ela depende de o
+lance jogado aparecer entre as linhas do MultiPV da posição anterior — se não
+aparecer, não há estimativa para confrontar. Acontece em 6 dos 33 meios-lances
+da partida de exemplo e em 41 dos 134 de uma partida amadora. É limite do
+método, não falha: sem estimativa, não há o que comparar.
+
+**Cerca de 2% dos lances continuam contestados depois da reanálise.** São
+posições em que o motor discorda de si mesmo mesmo com o MultiPV alargado.
+Nesses casos a avaliação exibida é a da busca mais ampla, e o painel diz "o
+motor discorda de si mesmo aqui" — preferível a esconder que os dados não
+fecham.
+
 **A SAN exibida pode diferir da colada.** Se o PGN anotar `Qxe4#` num lance que
 só dá xeque, o `chess.js` corrige silenciosamente para `Qxe4+` e é a versão
 corrigida que aparece na tela.
@@ -322,12 +375,19 @@ exemplos triviais: os dois sacrifícios da Ópera de Morphy, o lance forçado qu
 não deve ser julgado, o mate que não pode ser rebaixado, o `2. g4` que está na
 base de aberturas e mesmo assim é capivara, o buraco da base no meio da
 Najdorf, os três falsos Brilhantes da partida caótica, os dois pisos de posição
-decidida, e a contagem de material em roque, en passant e promoção.
+decidida, a contagem de material em roque, en passant e promoção, e a
+contradição do motor em torno de `15.Bxd7+` — incluindo `15... Nxd7` não voltar
+a ser "Melhor".
 
 Conferi que a suíte pega regressão de verdade, e não só passa: removendo a
 condição da casa de destino do sacrifício, três testes falham; fazendo "Livro"
 ignorar a perda, dois falham; fazendo a teoria terminar no primeiro buraco da
-base, quatro falham.
+base, quatro falham; afrouxando o limiar de discordância, três falham; e
+removendo a regra dos pares de fronteira, um falha.
+
+Essa última verificação pagou por si: a primeira versão do teste da regra de
+fronteira passava com e sem a regra — naquele caso específico os valores
+concordavam por acaso. Um teste que passa dos dois lados não testa nada.
 
 Regravar as avaliações só é necessário se a profundidade, o MultiPV ou a versão
 do Stockfish mudarem — e nesse caso as expectativas precisam ser reconferidas à

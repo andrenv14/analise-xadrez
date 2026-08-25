@@ -36,6 +36,7 @@ function analise(
     avaliacao: avaliacoes[0],
     melhorLance: lances[0],
     profundidade: 16,
+    configuracao: { profundidade: 16, linhas: 3 },
   }
 }
 
