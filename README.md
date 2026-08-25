@@ -8,7 +8,7 @@ jogado isso".
 Tudo roda no navegador. Não há servidor, banco, login ou chamada de rede
 depois que a página carrega.
 
-![A Ópera de Morphy na posição de 16.Qb8+: o tabuleiro à esquerda e, à direita, o painel com a abertura reconhecida, a avaliação de mate em 1, o melhor lance e a classificação Brilhante com o motivo, acima da lista de lances marcada com a classificação de cada um](docs/captura.png)
+![A Ópera de Morphy na posição de 16.Qb8+: a eval bar totalmente branca à esquerda do tabuleiro e, à direita, o painel com a abertura reconhecida, a avaliação de mate em 1, o melhor lance e a classificação Brilhante com o motivo, acima da lista de lances marcada com a classificação de cada um](docs/captura.png)
 
 **No ar em [analise-xadrez.netlify.app](https://analise-xadrez.netlify.app)**
 
