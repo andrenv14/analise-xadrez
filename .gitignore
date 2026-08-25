@@ -30,3 +30,6 @@ dist-ssr
 
 # Binários do Stockfish: copiados de node_modules pelo script predev/prebuild
 public/engine/
+
+# Fontes: copiadas de node_modules pelo script predev/prebuild
+public/fonts/

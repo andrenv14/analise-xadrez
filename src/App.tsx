@@ -232,47 +232,59 @@ export default function App() {
   if (lanceExibido) {
     // Amarelo para lance da partida, verde para lance do usuário: o tabuleiro
     // também precisa dizer que estamos numa variante.
-    const cor = naVariante ? 'rgba(111, 158, 106, 0.5)' : 'rgba(255, 214, 102, 0.55)'
+    // Lápis azul para o lance da variante, ocre para o lance da partida.
+    const cor = naVariante
+      ? 'color-mix(in srgb, var(--lapis-azul) 42%, transparent)'
+      : 'color-mix(in srgb, var(--ocre) 45%, transparent)'
     destaques[lanceExibido.from] = { background: cor }
     destaques[lanceExibido.to] = { background: cor }
   }
   if (origemSelecionada) {
-    destaques[origemSelecionada] = { background: 'rgba(53, 196, 196, 0.55)' }
+    destaques[origemSelecionada] = {
+      background: 'color-mix(in srgb, var(--lapis-azul) 55%, transparent)',
+    }
   }
 
   return (
     <div className="app">
-      <header className="cabecalho">
-        <h1>Avaliador de partidas de xadrez</h1>
-        <p className="subtitulo">
-          Cole um PGN e navegue a partida. A análise do motor entra em uma etapa seguinte.
-        </p>
-      </header>
-
-      <section className="entrada">
-        <label htmlFor="pgn">PGN da partida</label>
-        <textarea
-          id="pgn"
-          value={pgn}
-          spellCheck={false}
-          placeholder="[Event ...]&#10;1. e4 e5 2. Nf3 ..."
-          onChange={(e) => setPgn(e.target.value)}
-        />
-        <div className="acoes">
-          <button type="button" className="primario" onClick={analisar}>
-            Analisar
-          </button>
-          <button type="button" onClick={() => setPgn(PGN_EXEMPLO)}>
-            Usar PGN de exemplo
-          </button>
-        </div>
-        {erro && (
-          <div className="erro" role="alert">
-            <p>{erro.mensagem}</p>
-            {erro.detalhe && <p className="erro-detalhe">{erro.detalhe}</p>}
+      <header className="topo">
+        <h1>Avaliador de partidas</h1>
+        {jogo && (
+          <div className="topo__progresso">
+            <ProgressoDoMotor progresso={progresso} />
           </div>
         )}
-      </section>
+      </header>
+
+      {/* Depois que a partida carrega o textarea já fez o seu trabalho e
+          recolhe: ele ocupava a dobra inteira sem ter mais o que dizer. */}
+      <details className="entrada" open={!jogo}>
+        <summary>{jogo ? 'Trocar o PGN' : 'Cole o PGN da partida'}</summary>
+        <div className="entrada__corpo">
+          <label htmlFor="pgn">PGN da partida</label>
+          <textarea
+            id="pgn"
+            value={pgn}
+            spellCheck={false}
+            placeholder="[Event ...]&#10;1. e4 e5 2. Nf3 ..."
+            onChange={(e) => setPgn(e.target.value)}
+          />
+          <div className="acoes">
+            <button type="button" className="primario" onClick={analisar}>
+              Analisar
+            </button>
+            <button type="button" onClick={() => setPgn(PGN_EXEMPLO)}>
+              Usar PGN de exemplo
+            </button>
+          </div>
+          {erro && (
+            <div className="erro" role="alert">
+              <p>{erro.mensagem}</p>
+              {erro.detalhe && <p className="erro-detalhe">{erro.detalhe}</p>}
+            </div>
+          )}
+        </div>
+      </details>
 
       {partidas.length > 1 && (
         <div className="seletor-de-partida">
@@ -293,8 +305,6 @@ export default function App() {
         </div>
       )}
 
-      {jogo && fen && <ProgressoDoMotor progresso={progresso} />}
-
       {jogo && fen && (
         <section className="partida">
           <div className="coluna-tabuleiro">
@@ -308,6 +318,10 @@ export default function App() {
                     boardOrientation: orientacao,
                     allowDragging: true,
                     showNotation: true,
+                    // Ardósia e papel: material real de tabuleiro, e não o
+                    // verde que todo site de xadrez usa.
+                    lightSquareStyle: { backgroundColor: 'var(--casa-clara)' },
+                    darkSquareStyle: { backgroundColor: 'var(--casa-escura)' },
                     squareStyles: destaques,
                     onPieceDrop: ({ sourceSquare, targetSquare }) => {
                       setOrigemSelecionada(null)
@@ -403,24 +417,29 @@ export default function App() {
               />
             )}
 
-            <MoveList
-              plies={jogo.plies}
-              indiceAtual={indice}
-              classificacoes={classificacoes}
-              variante={variante}
-              onSelecionar={irPara}
-              onSelecionarNaVariante={irParaNaVarianteAtual}
-            />
+            {/* No celular esta é a única região que rola: tabuleiro e painel
+                ficam parados acima dela, e a navegação fixa abaixo. No
+                desktop o wrapper some (`display: contents`). */}
+            <div className="rolagem">
+              <MoveList
+                plies={jogo.plies}
+                indiceAtual={indice}
+                classificacoes={classificacoes}
+                variante={variante}
+                onSelecionar={irPara}
+                onSelecionarNaVariante={irParaNaVarianteAtual}
+              />
+
+              {resumo && (
+                <ResumoDaPartida
+                  resumo={resumo}
+                  totalDePlies={jogo.plies.length}
+                  completo={progresso.estado === 'concluida'}
+                />
+              )}
+            </div>
           </aside>
         </section>
-      )}
-
-      {jogo && resumo && (
-        <ResumoDaPartida
-          resumo={resumo}
-          totalDePlies={jogo.plies.length}
-          completo={progresso.estado === 'concluida'}
-        />
       )}
     </div>
   )

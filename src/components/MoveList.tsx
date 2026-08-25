@@ -64,12 +64,15 @@ export function MoveList({
   }
 
   const botao = (ply: Ply | undefined) => {
-    if (!ply) return <span className="move move--vazio">…</span>
+    // Casa vazia da lista: mantém o tom das pretas, para a alternância não
+    // abrir um buraco branco na última linha de uma partida ímpar.
+    if (!ply) return <span className="move move--vazio" />
     // Na variante, o lance de onde ela partiu fica marcado como raiz — não
     // como selecionado, porque o que está no tabuleiro é a variante.
     const ehRaizDaVariante = naVariante && ply.ply === variante.raiz
     const selecionado = !naVariante && ply.ply === indiceAtual
-    const classes = ['move']
+    // A assinatura: o fundo diz de quem é o lance.
+    const classes = ['move', ply.color === 'w' ? 'move--brancas' : 'move--pretas']
     if (selecionado) classes.push('move--selecionado')
     if (ehRaizDaVariante) classes.push('move--raiz-da-variante')
     return (

@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { descreverAvaliacao, formatarAvaliacao, fracaoDasBrancas } from '../engine'
 import type { Avaliacao } from '../engine'
 
@@ -19,11 +20,20 @@ export function EvalBar({ avaliacao, orientacao }: Props) {
       aria-label={avaliacao ? descreverAvaliacao(avaliacao) : 'posição ainda não analisada'}
     >
       <div
-        className="eval-bar__brancas"
-        style={{
-          height: `${(fracao * 100).toFixed(1)}%`,
-          [brancasEmBaixo ? 'bottom' : 'top']: 0,
-        }}
+        className={
+          brancasEmBaixo
+            ? 'eval-bar__brancas eval-bar__brancas--baixo'
+            : 'eval-bar__brancas eval-bar__brancas--cima'
+        }
+        style={
+          {
+            height: `${(fracao * 100).toFixed(1)}%`,
+            [brancasEmBaixo ? 'bottom' : 'top']: 0,
+            // No celular a barra deita e o preenchimento passa a ser
+            // horizontal; o CSS lê esta variável em vez da altura.
+            '--fracao-brancas': `${(fracao * 100).toFixed(1)}%`,
+          } as CSSProperties
+        }
       />
       <span className="eval-bar__rotulo">{avaliacao ? formatarAvaliacao(avaliacao) : '…'}</span>
     </div>
